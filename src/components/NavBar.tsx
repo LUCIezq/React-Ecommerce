@@ -5,7 +5,11 @@ import { User } from 'lucide-react';
 import { Heart } from "lucide-react";
 import CartMenu from "./CartMenu";
 
-export default function NavBar() {
+interface HeaderProps {
+    total: number;
+}
+
+export default function NavBar({ total }: HeaderProps) {
     return (
         <nav className="text-white  w-full justify-between flex">
             <ul className="flex gap-7 m-auto -200">
@@ -22,7 +26,7 @@ export default function NavBar() {
             </ul>
 
             <div className="flex items-center justify-between gap-6">
-                <CartMenu />
+                <CartMenu total={total} />
                 <User strokeWidth={1} className="cursor-pointer" />
                 <Heart strokeWidth={1} className="cursor-pointer" />
             </div>

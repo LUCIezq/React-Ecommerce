@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import Product from "./Product";
 import { SkeletonCard } from "./SkeletonCard";
-
+import { toast } from 'sonner'
 
 interface ApiData {
     id: number,
@@ -15,30 +15,14 @@ interface ApiData {
 
 interface propsComponent {
     size?: number
+    cart: ApiData[],
+    setCart: React.Dispatch<React.SetStateAction<ApiData[]>>;
 }
 
-export default function Products({ size }: propsComponent) {
+export default function Products({ size, cart, setCart }: propsComponent) {
 
     const [data, setData] = useState<ApiData[] | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
-    const [cart, setCart] = useState<ApiData[]>(() => {
-        try {
-            const storedCart = localStorage.getItem('cart');
-            return storedCart ? JSON.parse(storedCart) : [];
-        } catch (error) {
-            console.error('error al cargar el carrito', error)
-            return [];
-        }
-    });
-    const [total, setTotal] = useState<number>(() => {
-        try {
-            const totalStored = localStorage.getItem('total');
-            return totalStored ? JSON.parse(totalStored) : 0;
-        } catch (error) {
-            console.error('error al cargar el carrito', error)
-            return [];
-        }
-    });
 
     const addToCart = (item: ApiData): void => {
 
@@ -52,6 +36,9 @@ export default function Products({ size }: propsComponent) {
                 return [...prevCart, { ...item, quantity: 1 }]
             }
         })
+        toast.success(`Producto agregado con exito!`, {
+            description: `${item.title}`
+        });
         localStorage.setItem("cart", JSON.stringify(cart))
     }
 
@@ -77,27 +64,6 @@ export default function Products({ size }: propsComponent) {
     useEffect(() => {
         fetchData();
     }, [])
-
-    useEffect(() => {
-        try {
-            localStorage.setItem('cart', JSON.stringify(cart))
-        } catch (err) {
-            console.error('error al setear el carrito', err)
-        }
-
-        setTotal(() => {
-            return cart.reduce((sum, item) => {
-                return sum + item.quantity
-            }, 0)
-        })
-
-        try {
-            localStorage.setItem('total', JSON.stringify(total))
-        } catch (err) {
-            console.error('error al setear el carrito', err)
-        }
-
-    }, [cart, total]);
 
     return (
         <div className="grid grid-cols-[repeat(auto-fit,min(350px,100%))] gap-4 w-full justify-center h-fit" >
