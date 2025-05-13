@@ -20,7 +20,7 @@ export default function NavBar({ total, cart, setCart, hidden, setHidden }: Head
             </ul>}
 
             <div className="flex items-center justify-between gap-6">
-                <CartMenu total={total} cart={cart} setCart={setCart} />
+                <CartMenu setHidden={setHidden} total={total} cart={cart} setCart={setCart} />
                 {/* <User strokeWidth={1} className="cursor-pointer" />
                 <Heart strokeWidth={1} className="cursor-pointer" /> */}
             </div>
