@@ -118,3 +118,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+::-webkit-scrollbar { 
+    /* Personaliza el ancho de la barra de desplazamiento */ 
+    display: none;
+} 

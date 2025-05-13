@@ -4,11 +4,10 @@ interface CartEmptyProp {
 
 export default function CartEmpty({ text }: CartEmptyProp) {
     return (
-        <div>
-            <span>
+        <div className="flex justify-center items-center">
+            <span className="text-[15px]">
                 {text}
             </span>
-            <img src="" alt="" />
         </div>
     )
 }

@@ -42,8 +42,8 @@ export default function App() {
 
   return (
     <>
-      <Toaster richColors position="bottom-center" />
-      <Header total={total} />
+      <Toaster richColors position="bottom-right" />
+      <Header total={total} cart={cart} setCart={setCart} />
       <Routes>
         <Route path="/" element={<Home cart={cart} setCart={setCart} />} ></Route>
         <Route path="/productos" element={<Producto cart={cart} setCart={setCart} />} ></Route>

@@ -4,12 +4,22 @@ import type { NavLinkItem } from "@/types/NavLinkItem"
 import { User } from 'lucide-react';
 import { Heart } from "lucide-react";
 import CartMenu from "./CartMenu";
-
+interface ApiData {
+    id: number,
+    title: string,
+    price: number,
+    description: string,
+    category: string,
+    imageUrl: string,
+    quantity: number
+}
 interface HeaderProps {
     total: number;
+    cart: ApiData[];
+    setCart: React.Dispatch<React.SetStateAction<ApiData[]>>;
 }
 
-export default function NavBar({ total }: HeaderProps) {
+export default function NavBar({ total, cart, setCart }: HeaderProps) {
     return (
         <nav className="text-white  w-full justify-between flex">
             <ul className="flex gap-7 m-auto -200">
@@ -26,7 +36,7 @@ export default function NavBar({ total }: HeaderProps) {
             </ul>
 
             <div className="flex items-center justify-between gap-6">
-                <CartMenu total={total} />
+                <CartMenu total={total} cart={cart} setCart={setCart} />
                 <User strokeWidth={1} className="cursor-pointer" />
                 <Heart strokeWidth={1} className="cursor-pointer" />
             </div>
