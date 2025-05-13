@@ -4,9 +4,9 @@ import type { NavLinkItem } from "@/types/NavLinkItem"
 // import { User } from 'lucide-react';
 // import { Heart } from "lucide-react";
 import CartMenu from "./CartMenu";
-import type { HeaderProps } from "@/types/HeaderProps";
+import type { NavBarProps } from "@/types/NavBarProps";
 
-export default function NavBar({ total, cart, setCart, hidden, setHidden }: HeaderProps) {
+export default function NavBar({ total, cart, setCart, hidden, setHidden }: NavBarProps) {
     return (
         <nav className="text-white  w-full flex justify-end">
             {!hidden && <ul className="fixed bg-[#09090b] inset-0 sm:hidden flex mt-12 flex-col gap-5 p-4">
@@ -20,7 +20,7 @@ export default function NavBar({ total, cart, setCart, hidden, setHidden }: Head
             </ul>}
 
             <div className="flex items-center justify-between gap-6">
-                <CartMenu setHidden={setHidden} total={total} cart={cart} setCart={setCart} />
+                <CartMenu total={total} cart={cart} setCart={setCart} />
                 {/* <User strokeWidth={1} className="cursor-pointer" />
                 <Heart strokeWidth={1} className="cursor-pointer" /> */}
             </div>
