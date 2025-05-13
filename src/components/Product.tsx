@@ -2,8 +2,8 @@ import type { ProductProps } from "@/types/ProductProps"
 
 export default function Product({ item, onClick }: ProductProps) {
     return (
-        <div className=" h-fit border-1 bg-black border-[#ffffff4d] hover:shadow-xl/5 shadow-white 
-                        cursor-pointer transition-all duration-400 w-full rounded-xl  hover:scale-105 ">
+        <div className=" h-fit border-1  bg-black border-[#ffffff4d] hover:shadow-xl/5 shadow-white 
+                        cursor-pointer transition-all duration-400 w-full rounded-xl  hover:scale-105  ">
 
             <div className="  min-h-[230px] rounded-xl flex  flex-col p-4 gap-5 justify-between">
             </div >

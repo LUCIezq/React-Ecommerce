@@ -10,6 +10,7 @@ export default function Products({ size, cart, setCart }: ProductsProps) {
 
     const [data, setData] = useState<ApiData[] | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<boolean>(true);
 
     const addToCart = (item: ApiData): void => {
 
@@ -31,6 +32,7 @@ export default function Products({ size, cart, setCart }: ProductsProps) {
 
 
     const fetchData = async () => {
+        setError(false);
         setLoading(true);
         try {
             const response = await fetch("https://fakestoreapi.com/products");
@@ -42,7 +44,8 @@ export default function Products({ size, cart, setCart }: ProductsProps) {
             setData(dataJson);
 
         } catch (err) {
-            console.error(err);
+            console.log("Hubo un error al cargar los datos: ", err);
+            setError(true);
         } finally {
             setLoading(false)
         }
@@ -51,6 +54,12 @@ export default function Products({ size, cart, setCart }: ProductsProps) {
     useEffect(() => {
         fetchData();
     }, [])
+
+    if (error) {
+        return (<div className="flex items-center  h-full justify-center  w-full">
+            <p className="text-[#ffffff79] text-[20px]">Hubo un error al cargar los datos</p>
+        </div>)
+    }
 
     return (
         <div className="grid grid-cols-[repeat(auto-fit,min(350px,100%))] gap-4 w-full justify-center h-fit" >
