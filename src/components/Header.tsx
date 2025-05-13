@@ -1,19 +1,6 @@
 import Brand from "./Brand"
 import NavBar from './NavBar'
-interface ApiData {
-    id: number,
-    title: string,
-    price: number,
-    description: string,
-    category: string,
-    imageUrl: string,
-    quantity: number
-}
-interface HeaderProps {
-    total: number;
-    cart: ApiData[];
-    setCart: React.Dispatch<React.SetStateAction<ApiData[]>>;
-}
+import type { HeaderProps } from "@/types/HeaderProps";
 
 export default function Header({ total, cart, setCart }: HeaderProps) {
     return (

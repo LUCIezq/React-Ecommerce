@@ -9,31 +9,16 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-
 import { toast } from 'sonner'
-
 import { Trash2 } from 'lucide-react';
-interface ApiData {
-    id: number,
-    title: string,
-    price: number,
-    description: string,
-    category: string,
-    imageUrl: string,
-    quantity: number
-}
-
-interface Alert {
-    item: ApiData;
-    setCart: React.Dispatch<React.SetStateAction<ApiData[]>>;
-}
+import type { Alert } from "@/types/Alert";
+import type { ApiData } from "@/types/ApiData";
 
 export default function AlertDialogComponent({ item, setCart }: Alert) {
 
     const deleteElement = (item: ApiData) => {
         setCart(prevCart => prevCart.filter(element => !(element.id == item.id)))
         toast.error('Producto eliminado')
-
     }
 
     return <>
@@ -41,7 +26,7 @@ export default function AlertDialogComponent({ item, setCart }: Alert) {
             <AlertDialogTrigger  >
                 <Trash2 strokeWidth={2} size={18} className="cursor-pointer hover:text-white transition-all" />
             </AlertDialogTrigger>
-            <AlertDialogContent className="bg-[#09090b]">
+            <AlertDialogContent className="bg-[#09090b] border-[#ffffff26]">
                 <AlertDialogHeader>
                     <AlertDialogTitle className="text-white">¿Seguro que querés eliminar este producto?</AlertDialogTitle>
                     <AlertDialogDescription className="text-white">
@@ -49,8 +34,8 @@ export default function AlertDialogComponent({ item, setCart }: Alert) {
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => deleteElement(item)} className="hover:bg-red-800">Continue</AlertDialogAction>
+                    <AlertDialogCancel className="cursor-pointer">Cancel</AlertDialogCancel>
+                    <AlertDialogAction onClick={() => deleteElement(item)} className="hover:bg-red-800 cursor-pointer">Continue</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog >

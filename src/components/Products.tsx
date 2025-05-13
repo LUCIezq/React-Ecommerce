@@ -2,24 +2,11 @@ import { useState, useEffect } from "react"
 import Product from "./Product";
 import { SkeletonCard } from "./SkeletonCard";
 import { toast } from 'sonner'
+import type { ApiData } from "@/types/ApiData";
+import type { ProductsProps } from "@/types/ProductsProps";
 
-interface ApiData {
-    id: number,
-    title: string,
-    price: number,
-    description: string,
-    category: string,
-    imageUrl: string,
-    quantity: number
-}
 
-interface propsComponent {
-    size?: number
-    cart: ApiData[],
-    setCart: React.Dispatch<React.SetStateAction<ApiData[]>>;
-}
-
-export default function Products({ size, cart, setCart }: propsComponent) {
+export default function Products({ size, cart, setCart }: ProductsProps) {
 
     const [data, setData] = useState<ApiData[] | null>(null);
     const [loading, setLoading] = useState<boolean>(true);

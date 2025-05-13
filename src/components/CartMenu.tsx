@@ -6,45 +6,30 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
-import {ShoppingBasket } from "lucide-react"
+import { ShoppingBasket } from "lucide-react"
 
 import { Plus } from 'lucide-react';
 import { Minus } from 'lucide-react';
-import type React from "react";
 import CartEmpty from "./CartEmpty";
 import AlertDialogComponent from "./AlertDialogComponent";
-
-interface ApiData {
-    id: number,
-    title: string,
-    price: number,
-    description: string,
-    category: string,
-    imageUrl: string,
-    quantity: number
-}
-interface HeaderProps {
-    total: number;
-    cart: ApiData[]
-    setCart: React.Dispatch<React.SetStateAction<ApiData[]>>;
-}
+import type { HeaderProps } from "@/types/HeaderProps";
+import type { ApiData } from "@/types/ApiData";
 
 export default function CartMenu({ total, cart, setCart }: HeaderProps) {
 
-
     const incrementarCantidad = (item: ApiData): void => {
-        setCart((prevCart)=>{
+        setCart((prevCart) => {
             return prevCart.map(element => element.id === item.id ?
-                    { ...element, quantity: element.quantity + 1 } : element)
+                { ...element, quantity: element.quantity + 1 } : element)
         })
     }
 
     const decrementarCantidad = (item: ApiData): void => {
-        setCart((prevCart)=>{
-            const newCart = prevCart.map(element => element.id === item.id?
-            { ...element, quantity: element.quantity - 1 } : element)
+        setCart((prevCart) => {
+            const newCart = prevCart.map(element => element.id === item.id ?
+                { ...element, quantity: element.quantity - 1 } : element)
 
-        return newCart.filter(element=>element.quantity>0);
+            return newCart.filter(element => element.quantity > 0);
         })
     }
 
@@ -60,8 +45,8 @@ export default function CartMenu({ total, cart, setCart }: HeaderProps) {
                 <SheetHeader className="flex gap-5 h-full">
                     <SheetTitle className="text-2xl text-white pb-2">Carrito</SheetTitle>
                     <SheetDescription className="flex flex-col gap-5 h-full overflow-y-scroll scroll">
-                        {cart.length==0 && <CartEmpty text="El carrito se encuentra actualmente vacio"/>}    
-                    {cart.map((item => {
+                        {cart.length == 0 && <CartEmpty text="El carrito se encuentra actualmente vacio" />}
+                        {cart.map((item => {
                             return (
                                 <div key={item.id} className="flex flex-col gap-5 border-b-1 
                             border-[#ffffff15] pb-5 ">
@@ -71,16 +56,16 @@ export default function CartMenu({ total, cart, setCart }: HeaderProps) {
                                             <span className="text-white text-[15px] hover:underline">{item.title}</span>
                                         </div>
                                         <AlertDialogComponent setCart={setCart} item={item} />
-                                        
+
                                     </div>
                                     <div className="flex justify-between items-center">
                                         <span className="text-white font-medium text-[15px]">{item.quantity} x {item.price}</span>
                                         <div className="flex items-center hover:border-white border-1 gap-5 border-[#ffffff38] px-3 py-1.5 rounded-[12px] hover:text-white transition-all">
-                                            <button name="decrementar" className="cursor-pointer" onClick={()=>decrementarCantidad(item)}>
+                                            <button name="decrementar" className="cursor-pointer" onClick={() => decrementarCantidad(item)}>
                                                 <Minus />
                                             </button>
                                             <span>{item.quantity}</span>
-                                            <button name="incrementar" className="cursor-pointer" onClick={()=>incrementarCantidad(item)}>
+                                            <button name="incrementar" className="cursor-pointer" onClick={() => incrementarCantidad(item)}>
                                                 <Plus />
                                             </button>
                                         </div>

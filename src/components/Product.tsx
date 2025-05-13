@@ -1,17 +1,4 @@
-interface ApiData {
-    id: number,
-    title: string,
-    price: number,
-    description: string,
-    category: string,
-    imageUrl: string,
-    quantity: number
-}
-
-interface ProductProps {
-    item: ApiData
-    onClick: (item: ApiData) => void
-}
+import type { ProductProps } from "@/types/ProductProps"
 
 export default function Product({ item, onClick }: ProductProps) {
     return (

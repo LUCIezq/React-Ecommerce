@@ -4,20 +4,7 @@ import type { NavLinkItem } from "@/types/NavLinkItem"
 import { User } from 'lucide-react';
 import { Heart } from "lucide-react";
 import CartMenu from "./CartMenu";
-interface ApiData {
-    id: number,
-    title: string,
-    price: number,
-    description: string,
-    category: string,
-    imageUrl: string,
-    quantity: number
-}
-interface HeaderProps {
-    total: number;
-    cart: ApiData[];
-    setCart: React.Dispatch<React.SetStateAction<ApiData[]>>;
-}
+import type { HeaderProps } from "@/types/HeaderProps";
 
 export default function NavBar({ total, cart, setCart }: HeaderProps) {
     return (

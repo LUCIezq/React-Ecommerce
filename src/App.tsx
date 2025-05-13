@@ -5,17 +5,7 @@ import Contacto from "./pages/Contacto"
 import Header from "./components/Header"
 import { useState, useEffect } from "react"
 import { Toaster } from 'sonner'
-
-
-interface ApiData {
-  id: number,
-  title: string,
-  price: number,
-  description: string,
-  category: string,
-  imageUrl: string,
-  quantity: number
-}
+import type { ApiData } from "./types/ApiData"
 
 export default function App() {
 
