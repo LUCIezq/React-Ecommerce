@@ -8,12 +8,11 @@ import {
 } from "@/components/ui/sheet"
 import {ShoppingBasket } from "lucide-react"
 
-import { Trash2 } from 'lucide-react';
 import { Plus } from 'lucide-react';
 import { Minus } from 'lucide-react';
 import type React from "react";
 import CartEmpty from "./CartEmpty";
-
+import AlertDialogComponent from "./AlertDialogComponent";
 
 interface ApiData {
     id: number,
@@ -49,7 +48,6 @@ export default function CartMenu({ total, cart, setCart }: HeaderProps) {
         })
     }
 
-
     return (
         <Sheet >
             <SheetTrigger className="flex items-center gap-1">
@@ -58,7 +56,7 @@ export default function CartMenu({ total, cart, setCart }: HeaderProps) {
                     {total}
                 </span>
             </SheetTrigger>
-            <SheetContent className="bg-black border-[#ffffff4b] ">
+            <SheetContent className="bg-[#09090b] border-[#ffffff4b] ">
                 <SheetHeader className="flex gap-5 h-full">
                     <SheetTitle className="text-2xl text-white pb-2">Carrito</SheetTitle>
                     <SheetDescription className="flex flex-col gap-5 h-full overflow-y-scroll scroll">
@@ -72,7 +70,8 @@ export default function CartMenu({ total, cart, setCart }: HeaderProps) {
                                             <span>{item.category}</span>
                                             <span className="text-white text-[15px] hover:underline">{item.title}</span>
                                         </div>
-                                        <Trash2 strokeWidth={2} size={18} className="cursor-pointer hover:text-white transition-all" />
+                                        <AlertDialogComponent setCart={setCart} item={item} />
+                                        
                                     </div>
                                     <div className="flex justify-between items-center">
                                         <span className="text-white font-medium text-[15px]">{item.quantity} x {item.price}</span>
