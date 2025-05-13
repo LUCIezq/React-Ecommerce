@@ -17,7 +17,7 @@ import type { ApiData } from "@/types/ApiData";
 import { calculateTotal } from "@/utils/CartUtils";
 import { useEffect, useState } from "react";
 
-export default function CartMenu({ total, cart, setCart }: HeaderProps) {
+export default function CartMenu({ total, cart, setCart, setHidden }: HeaderProps) {
     const [totalPrice, setTotal] = useState<number>(0);
 
     const incrementarCantidad = (item: ApiData): void => {
