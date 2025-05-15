@@ -5,8 +5,7 @@ import { toast } from 'sonner'
 import type { ApiData } from "@/types/ApiData";
 import type { ProductsProps } from "@/types/ProductsProps";
 
-
-export default function Products({ size, cart, setCart }: ProductsProps) {
+export default function Products({ size, cart, setCart, filter }: ProductsProps) {
 
     const [data, setData] = useState<ApiData[] | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
@@ -29,7 +28,6 @@ export default function Products({ size, cart, setCart }: ProductsProps) {
         });
         localStorage.setItem("cart", JSON.stringify(cart))
     }
-
 
     const fetchData = async () => {
         setError(false);
@@ -61,16 +59,17 @@ export default function Products({ size, cart, setCart }: ProductsProps) {
         </div>)
     }
 
+
     return (
-        <div className="grid grid-cols-[repeat(auto-fit,min(350px,100%))] gap-4 w-full justify-center h-fit" >
+
+        <div className="grid grid-cols-[repeat(auto-fit,min(400px,100%))]  sm:grid-cols-[repeat(auto-fit,min(310px,100%))]  gap-4 w-full justify-center h-fit p-2" >
             {loading ? (
                 <SkeletonCard grid={size ?? 5} />
             ) : (
                 data != null &&
-                data.slice(0, size ?? data.length).map((product) => {
-                    return <Product key={product.id} item={product} onClick={addToCart} />
-                    //diferencia entre addToCart y ()=>addToCart
-                })
+                data.filter((element) => filter === 'All' || element.category === filter || !filter).slice(0, size ?? data.length).map((product) => (
+                    <Product key={product.id} item={product} onClick={addToCart} />
+                ))
             )}
         </div>
     )
