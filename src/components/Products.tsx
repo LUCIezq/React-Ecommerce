@@ -64,7 +64,7 @@ export default function Products({ size, cart, setCart, filter }: ProductsProps)
         <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] 
         gap-4 w-full justify-start h-fit p-5 bg-[#0e0e11] rounded-[7px]" >
             {loading ? (
-                <SkeletonCard grid={size ?? 5} />
+                <SkeletonCard grid={size ?? 4} />
             ) : (
                 data != null &&
                 data.filter((element) => filter === 'All' || element.category === filter || !filter).slice(0, size ?? data.length).map((product) => (

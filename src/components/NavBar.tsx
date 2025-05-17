@@ -14,11 +14,13 @@ export default function NavBar({ setHidden }: Props) {
             {navLinks.map((link: NavLinkItem) => (
                 <li onClick={() => setHidden(true)} className="text-5xl md:text-[20px]"
                     key={link.id}>
-                    <NavLink to={link.path}
+                    <NavLink className={({ isActive }) =>
+                        ` ${isActive ? "underline" : ""}`}
+                        to={link.path}
                     >{link.name}</NavLink>
                 </li>
             ))}
 
-        </ul>
+        </ul >
     </>
 } 

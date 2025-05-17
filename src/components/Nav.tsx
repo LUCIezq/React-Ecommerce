@@ -16,7 +16,7 @@ export default function Nav({ hidden, setHidden }: Props) {
             }
 
             <div className="hidden md:block">
-                <NavBar />
+                <NavBar setHidden={setHidden} />
             </div>
 
         </nav >
