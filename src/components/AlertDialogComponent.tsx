@@ -26,7 +26,7 @@ export default function AlertDialogComponent({ item, setCart }: Alert) {
             <AlertDialogTrigger  >
                 <Trash2 strokeWidth={2} size={18} className="cursor-pointer hover:text-white transition-all" />
             </AlertDialogTrigger>
-            <AlertDialogContent className="bg-[#09090b] border-[#ffffff26]">
+            <AlertDialogContent className="bg-[#09090b] w-[min(350px,100%)] border-[#ffffff26]">
                 <AlertDialogHeader>
                     <AlertDialogTitle className="text-white">¿Seguro que querés eliminar este producto?</AlertDialogTitle>
                     <AlertDialogDescription className="text-white">
@@ -34,8 +34,8 @@ export default function AlertDialogComponent({ item, setCart }: Alert) {
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel className="cursor-pointer">Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => deleteElement(item)} className="hover:bg-red-800 cursor-pointer">Continue</AlertDialogAction>
+                    <AlertDialogCancel className="cursor-pointer">Cancelar</AlertDialogCancel>
+                    <AlertDialogAction onClick={() => deleteElement(item)} className="hover:bg-red-800 cursor-pointer">Continuar</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog >
