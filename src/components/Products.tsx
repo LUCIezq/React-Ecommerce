@@ -59,10 +59,10 @@ export default function Products({ size, cart, setCart, filter }: ProductsProps)
         </div>)
     }
 
-
     return (
 
-        <div className="grid grid-cols-[repeat(auto-fit,min(400px,100%))]  sm:grid-cols-[repeat(auto-fit,min(310px,100%))]  gap-4 w-full justify-center h-fit p-2" >
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] 
+        gap-4 w-full justify-start h-fit p-5 bg-[#0e0e11] rounded-[7px]" >
             {loading ? (
                 <SkeletonCard grid={size ?? 5} />
             ) : (

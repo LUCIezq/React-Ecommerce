@@ -16,7 +16,7 @@ export default function Producto({ cart, setCart }: ProductoProps) {
     return (
         <>
             <Main>
-                <div className='flex flex-col w-fit p-7 min-w-[350px] gap-7  h-fit'>
+                <div className='flex flex-col  p-3 w-fit min-w-[350px] gap-7 h-fit'>
                     <Title text="Nuestros productos" />
                     <Filter setFilter={setFilter} />
                 </div>

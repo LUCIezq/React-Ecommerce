@@ -12,7 +12,7 @@ export default function Home({ cart, setCart }: ProductoProps) {
         <>
             <Main>
                 <Title text='Destacados' />
-                <Products size={4} cart={cart} setCart={setCart} />
+                <Products size={5} cart={cart} setCart={setCart} />
             </Main>
         </>
     )
