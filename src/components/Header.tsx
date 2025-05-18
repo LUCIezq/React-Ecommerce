@@ -5,8 +5,8 @@ import { X } from 'lucide-react'
 import { useState } from "react";
 import CartMenu from "./CartMenu";
 import { User } from 'lucide-react';
-import { Heart } from "lucide-react";
 import Nav from "./Nav";
+import PopoverFavorites from "./PopoverFavorites";
 
 export default function Header({ total, cart, setCart }: HeaderProps) {
 
@@ -32,7 +32,7 @@ export default function Header({ total, cart, setCart }: HeaderProps) {
 
             <div className="flex items-center justify-between gap-3 text-white">
                 <CartMenu total={total} cart={cart} setCart={setCart} />
-                <Heart strokeWidth={1} color="white" className="cursor-pointer" />
+                <PopoverFavorites />
                 <User strokeWidth={1} color="white" className="cursor-pointer" />
             </div>
 

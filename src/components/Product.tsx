@@ -1,8 +1,31 @@
+import { FavoritosContext } from "@/contexts/favoritos/FavoritosContext"
 import type { ProductProps } from "@/types/ProductProps"
+import { Heart } from "lucide-react"
+import { useContext } from "react"
+import { toast } from "sonner";
 
 export default function Product({ item, onClick }: ProductProps) {
+
+    const { favoritos, setFavoritos } = useContext(FavoritosContext);
+
+    const agregarFavorito = () => {
+
+        const exist = favoritos.find((e) => e.id == item.id);
+
+        if (!exist) {
+            setFavoritos(
+                [...favoritos, item]
+
+            )
+            toast.success('Se agrego a tus favoritos')
+        } else {
+            setFavoritos((prevVal) => prevVal.filter((e) => e.id != item.id))
+        }
+        console.log(favoritos)
+    }
+
     return (
-        <div className=" h-fit border-1  bg-black border-[#ffffff4d] hover:shadow-xl/5 shadow-white 
+        <div className=" h-fit border-1 relative  bg-black border-[#ffffff4d] hover:shadow-xl/5 shadow-white 
                         cursor-pointer transition-all duration-400 w-full rounded-xl  hover:scale-105  ">
 
             <div className="  min-h-[230px] rounded-xl flex  flex-col p-4 gap-5 justify-between">
@@ -19,6 +42,7 @@ export default function Product({ item, onClick }: ProductProps) {
                     rounded-2xl cursor-pointer hover:bg-white hover:text-black transition-all ">Comprar</button>
                 </div>
             </div>
+            <Heart className="absolute top-4 right-4 cursor-pointer" color="white " onClick={agregarFavorito} />
         </div >
     )
 }

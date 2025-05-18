@@ -6,6 +6,7 @@ import Header from "./components/Header"
 import { useState, useEffect } from "react"
 import { Toaster } from 'sonner'
 import type { ApiData } from "./types/ApiData"
+import { FavoritosProvider } from "./contexts/favoritos/FavoritosProvider"
 
 export default function App() {
 
@@ -31,15 +32,17 @@ export default function App() {
 
 
   return (
-    <>
+    <FavoritosProvider>
       <Toaster richColors theme="dark" position="bottom-right" />
       <Header total={total} cart={cart} setCart={setCart} />
+
       <Routes>
         <Route path="/" element={<Home cart={cart} setCart={setCart} />} ></Route>
         <Route path="/productos" element={<Producto cart={cart} setCart={setCart} />} ></Route>
         <Route path="/contacto" element={<Contacto />} ></Route>
       </Routes>
-    </>
+    </FavoritosProvider>
+
   )
 }
 
