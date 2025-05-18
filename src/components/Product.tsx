@@ -8,9 +8,13 @@ export default function Product({ item, onClick }: ProductProps) {
 
     const { favoritos, setFavoritos } = useContext(FavoritosContext);
 
+    const existElement = () => {
+        return favoritos.find((e) => e.id === item.id);
+    }
+
     const agregarFavorito = () => {
 
-        const exist = favoritos.find((e) => e.id == item.id);
+        const exist = existElement();
 
         if (!exist) {
             setFavoritos(
@@ -21,7 +25,6 @@ export default function Product({ item, onClick }: ProductProps) {
         } else {
             setFavoritos((prevVal) => prevVal.filter((e) => e.id != item.id))
         }
-        console.log(favoritos)
     }
 
     return (
@@ -42,7 +45,7 @@ export default function Product({ item, onClick }: ProductProps) {
                     rounded-2xl cursor-pointer hover:bg-white hover:text-black transition-all ">Comprar</button>
                 </div>
             </div>
-            <Heart className="absolute top-4 right-4 cursor-pointer" color="white " onClick={agregarFavorito} />
+            <Heart fill={existElement() ? "white" : ""} className="absolute top-4 right-4 cursor-pointer" color="white " onClick={agregarFavorito} />
         </div >
     )
 }
