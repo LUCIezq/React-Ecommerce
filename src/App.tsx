@@ -4,6 +4,8 @@ import Producto from "./pages/Producto"
 import Contacto from "./pages/Contacto"
 import Header from "./components/Header"
 import { Toaster } from 'sonner'
+import SignIn from "./pages/SignIn"
+
 
 export default function App() {
   return (
@@ -15,6 +17,7 @@ export default function App() {
         <Route path="/" element={<Home />} ></Route>
         <Route path="/productos" element={<Producto />} ></Route>
         <Route path="/contacto" element={<Contacto />} ></Route>
+        <Route path="/sign-in" element={<SignIn />} ></Route>
       </Routes>
     </>
   )

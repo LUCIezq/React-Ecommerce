@@ -30,16 +30,14 @@ export default function Product({ item }: ProductProps) {
     }
 
     return (
+
         <div className=" h-fit border-1 relative  bg-black border-[#ffffff4d] hover:shadow-xl/5 shadow-white 
                         cursor-pointer transition-all duration-400 w-full rounded-xl  hover:scale-105  ">
 
-            <div className="  min-h-[230px] rounded-xl flex  flex-col p-4 gap-5 justify-between">
-            </div >
-
             <div className=" p-5 flex flex-col gap-10">
                 <div className="flex flex-col gap-1 min-h-[100px]">
-                    <span className="text-gray-700 font-light">{item.category}</span>
-                    <h2 className="text-gray-400 font-medium text-[15px] hover:underline w-fit">{item.title}</h2>
+                    <span className="text-gray-700 font-medium">{item.category}</span>
+                    <h2 className="text-gray-300 font-semibold text-[16px] hover:underline w-fit">{item.title}</h2>
                 </div>
                 <div className="flex items-center justify-between">
                     <span className="text-white font-medium">$ {item.price}</span>

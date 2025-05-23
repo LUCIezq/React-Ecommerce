@@ -1,11 +1,11 @@
 import Brand from "./Brand"
-import { Menu } from 'lucide-react';
+import { Menu, User } from 'lucide-react';
 import { X } from 'lucide-react'
 import { useState } from "react";
 import CartMenu from "./CartMenu";
-import { User } from 'lucide-react';
 import Nav from "./Nav";
 import PopoverFavorites from "./PopoverFavorites";
+import { Link } from "react-router-dom";
 
 export default function Header() {
 
@@ -16,7 +16,7 @@ export default function Header() {
     }
 
     return (
-        <header className="bg-[#09090b] fixed left-0 right-0 border-b-1 border-[#ffffff22] p-5 flex justify-between items-center z-40">
+        <header className="bg-[black] fixed left-0 right-0  p-5 flex justify-between items-center z-40">
 
             <div className="cursor-pointer z-50 md:hidden" onClick={showMenu}>
                 {hidden ?
@@ -29,10 +29,14 @@ export default function Header() {
 
             <Nav hidden={hidden} setHidden={setHidden} />
 
-            <div className="flex items-center justify-between gap-3 text-white">
-                <CartMenu />
-                <PopoverFavorites />
-                <User strokeWidth={1} color="white" className="cursor-pointer" />
+            <div className="flex items-center justify-between gap-7 text-white">
+                <div className="flex gap-3">
+                    <CartMenu />
+                    {/* <PopoverFavorites /> */}
+                </div>
+
+                {/* <User strokeWidth={1} color="white" className="cursor-pointer" /> */}
+                <Link className=" font-medium transition-all border-1 border-white p-2 rounded-2xl hover:bg-white hover:text-black" to="/sign-in" >Iniciar sesion</Link>
             </div>
 
         </header>

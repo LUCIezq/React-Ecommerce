@@ -8,7 +8,7 @@ type Props = {
 
 export default function NavBar({ setHidden }: Props) {
     return <>
-        <ul className="fixed inset-0 bg-[#09090b] w-full h-full p-5 pt-20 flex 
+        <ul className="fixed inset-0 bg-[#000000] w-full h-full p-5 pt-20 flex 
             flex-col gap-7 md:relative md:flex-row md:p-0 md:gap-10">
 
             {navLinks.map((link: NavLinkItem) => (

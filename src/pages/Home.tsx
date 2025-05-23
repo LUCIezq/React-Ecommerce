@@ -8,6 +8,7 @@ export default function Home() {
             <Main>
                 <Title text='Destacados' />
                 <Products size={5} />
+                
             </Main>
         </>
     )
