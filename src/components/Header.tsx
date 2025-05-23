@@ -1,10 +1,10 @@
 import Brand from "./Brand"
-import { Menu, User } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { X } from 'lucide-react'
 import { useState } from "react";
 import CartMenu from "./CartMenu";
 import Nav from "./Nav";
-import PopoverFavorites from "./PopoverFavorites";
+// import PopoverFavorites from "./PopoverFavorites";
 import { Link } from "react-router-dom";
 
 export default function Header() {
