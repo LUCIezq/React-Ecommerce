@@ -1,12 +1,14 @@
+import { CarritoContext } from "@/contexts/carrito/CarritoContext";
 import { FavoritosContext } from "@/contexts/favoritos/FavoritosContext"
 import type { ProductProps } from "@/types/ProductProps"
 import { Heart } from "lucide-react"
 import { useContext } from "react"
 import { toast } from "sonner";
 
-export default function Product({ item, onClick }: ProductProps) {
+export default function Product({ item }: ProductProps) {
 
     const { favoritos, setFavoritos } = useContext(FavoritosContext);
+    const { addToCart } = useContext(CarritoContext);
 
     const existElement = () => {
         return favoritos.find((e) => e.id === item.id);
@@ -41,8 +43,8 @@ export default function Product({ item, onClick }: ProductProps) {
                 </div>
                 <div className="flex items-center justify-between">
                     <span className="text-white font-medium">$ {item.price}</span>
-                    <button onClick={() => onClick(item)} className="border-1 border-white self-start px-3 py-1 text-white
-                    rounded-2xl cursor-pointer hover:bg-white hover:text-black transition-all ">Comprar</button>
+                    <button className="border-1 border-white self-start px-3 py-1 text-white
+                    rounded-2xl cursor-pointer hover:bg-white hover:text-black transition-all " onClick={() => addToCart(item)}>Comprar</button>
                 </div>
             </div>
             <Heart fill={existElement() ? "white" : ""} className="absolute top-4 right-4 cursor-pointer" color="white " onClick={agregarFavorito} />

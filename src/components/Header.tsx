@@ -1,5 +1,4 @@
 import Brand from "./Brand"
-import type { HeaderProps } from "@/types/HeaderProps";
 import { Menu } from 'lucide-react';
 import { X } from 'lucide-react'
 import { useState } from "react";
@@ -8,7 +7,7 @@ import { User } from 'lucide-react';
 import Nav from "./Nav";
 import PopoverFavorites from "./PopoverFavorites";
 
-export default function Header({ total, cart, setCart }: HeaderProps) {
+export default function Header() {
 
     const [hidden, setHidden] = useState(true);
 
@@ -31,7 +30,7 @@ export default function Header({ total, cart, setCart }: HeaderProps) {
             <Nav hidden={hidden} setHidden={setHidden} />
 
             <div className="flex items-center justify-between gap-3 text-white">
-                <CartMenu total={total} cart={cart} setCart={setCart} />
+                <CartMenu />
                 <PopoverFavorites />
                 <User strokeWidth={1} color="white" className="cursor-pointer" />
             </div>

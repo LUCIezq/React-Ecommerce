@@ -13,11 +13,15 @@ import { toast } from 'sonner'
 import { Trash2 } from 'lucide-react';
 import type { Alert } from "@/types/Alert";
 import type { ApiData } from "@/types/ApiData";
+import { useContext } from "react";
+import { CarritoContext } from "@/contexts/carrito/CarritoContext";
 
-export default function AlertDialogComponent({ item, setCart }: Alert) {
+export default function AlertDialogComponent({ item }: Alert) {
+
+    const { setCarrito } = useContext(CarritoContext);
 
     const deleteElement = (item: ApiData) => {
-        setCart(prevCart => prevCart.filter(element => !(element.id == item.id)))
+        setCarrito(prevCart => prevCart.filter(element => !(element.id == item.id)))
         toast.error('Producto eliminado')
     }
 

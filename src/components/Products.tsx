@@ -1,39 +1,23 @@
 import { useState, useEffect } from "react"
 import Product from "./Product";
 import { SkeletonCard } from "./SkeletonCard";
-import { toast } from 'sonner'
 import type { ApiData } from "@/types/ApiData";
 import type { ProductsProps } from "@/types/ProductsProps";
 
-export default function Products({ size, cart, setCart, filter }: ProductsProps) {
+export default function Products({ size, filter }: ProductsProps) {
 
     const [data, setData] = useState<ApiData[] | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<boolean>(true);
 
-    const addToCart = (item: ApiData): void => {
+    const URL = "https://fakestoreapi.com/products";
 
-        setCart(prevCart => {
-            const exist = cart.find(element => element.id === item.id);
-
-            if (exist) {
-                return prevCart.map(element => element.id === item.id ?
-                    { ...element, quantity: element.quantity + 1 } : element)
-            } else {
-                return [...prevCart, { ...item, quantity: 1 }]
-            }
-        })
-        toast.success(`Producto agregado con exito!`, {
-            description: `${item.title}`
-        });
-        localStorage.setItem("cart", JSON.stringify(cart))
-    }
 
     const fetchData = async () => {
         setError(false);
         setLoading(true);
         try {
-            const response = await fetch("https://fakestoreapi.com/products");
+            const response = await fetch(URL);
 
             if (!response.ok) {
                 throw new Error("Error al obtener los datos.");
@@ -68,7 +52,7 @@ export default function Products({ size, cart, setCart, filter }: ProductsProps)
             ) : (
                 data != null &&
                 data.filter((element) => filter === 'All' || element.category === filter || !filter).slice(0, size ?? data.length).map((product) => (
-                    <Product key={product.id} item={product} onClick={addToCart} />
+                    <Product key={product.id} item={product} />
                 ))
             )}
         </div>
