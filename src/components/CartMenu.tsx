@@ -6,8 +6,6 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
-import { ShoppingBasket } from "lucide-react"
-
 import { Plus } from 'lucide-react';
 import { Minus } from 'lucide-react';
 import CartEmpty from "./CartEmpty";
@@ -17,6 +15,8 @@ import { useContext } from "react";
 import { CarritoContext } from "@/contexts/carrito/CarritoContext";
 import { UserContext } from "@/contexts/user/UserContext";
 import { useNavigate } from "react-router-dom";
+import { ShoppingBag } from 'lucide-react';
+
 
 export default function CartMenu() {
 
@@ -52,23 +52,21 @@ export default function CartMenu() {
     return (
         <Sheet >
             <SheetTrigger className="flex items-center gap-1">
-                <ShoppingBasket strokeWidth={1} className="cursor-pointer" />
-                <span className=" cursor-pointer text-center text-[#ffffffb0]">
+                <ShoppingBag strokeWidth={1} size={20} className="cursor-pointer" />
+                <span className=" cursor-pointer font-medium text-center text-[#ffffff]">
                     {calcularTotal()}
-
                 </span>
             </SheetTrigger>
-            <SheetContent className="bg-[#09090b] border-[#ffffff4b] ">
+            <SheetContent className="bg-[black] border-l-1 border-[#ffffff20]">
                 <SheetHeader className="flex gap-5 h-full">
                     <SheetTitle className="text-2xl text-white pb-2">Carrito</SheetTitle>
                     <SheetDescription className="flex flex-col gap-5 h-full overflow-y-scroll scroll">
                         {carrito.length == 0 && <CartEmpty text="El carrito se encuentra actualmente vacio" />}
                         <div className="flex flex-col h-full justify-between">
-                            <div className="">
+                            <div className="flex flex-col gap-3">
                                 {carrito.map((item => {
                                     return (
-                                        <div key={item.id} className="flex flex-col gap-5 border-b-1 
-                            border-[#ffffff15] py-5 ">
+                                        <div key={item.id} className="flex flex-col gap-5 bg-[#09090b33] rounded-[5px] py-3 px-4  ">
                                             <div className="flex items-center justify-between">
                                                 <div className=" max-w-9/12 flex flex-col gap-1">
                                                     <span>{item.category}</span>
@@ -92,7 +90,7 @@ export default function CartMenu() {
                                     )
                                 }))}
                             </div>
-                            {carrito.length != 0 && <div className="p-5 border-t-1 flex flex-col gap-5 border-[#ffffff4b]">
+                            {carrito.length != 0 && <div className="p-5 text-white bg-[#09090b33] flex flex-col gap-5 ">
                                 <div className="flex justify-between ">
                                     <span className="text-[20px] ">Total</span>
                                     <span className="text-[20px]">${calcularTotalCarrito()}</span>

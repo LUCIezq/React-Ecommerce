@@ -32,15 +32,16 @@ export default function Header() {
 
             <Nav hidden={hidden} setHidden={setHidden} />
 
-            <div className="flex items-center justify-between gap-7 text-white">
+            <div className="flex items-center justify-between gap-5 text-white">
+
+
+                {
+                    usuario == null ? <Link className=" font-medium text-[14px] transition-all border-1 border-white px-2 py-1.5 rounded-2xl hover:bg-white hover:text-black" to="/sign-in" >Iniciar sesion</Link> : <DropDownUser />
+                }
                 <div className="flex gap-5">
                     <CartMenu />
                     {usuario != null ? <PopoverFavorites /> : <></>}
                 </div>
-
-                {
-                    usuario == null ? <Link className=" font-medium transition-all border-1 border-white p-2 rounded-2xl hover:bg-white hover:text-black" to="/sign-in" >Iniciar sesion</Link> : <DropDownUser />
-                }
             </div>
 
         </header>

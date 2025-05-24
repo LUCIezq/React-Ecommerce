@@ -51,7 +51,7 @@ export default function SignIn() {
 
     return (
         <Main>
-            <div className="flex bg-[#000000d6] w-full h-full min-h-[780px] max-w-[550px] shadow-2xl rounded-4xl shadow-[#ffffff23] m-auto flex-col justify-center items-center ">
+            <div className="flex md:bg-[#000000d6] w-full h-full min-h-[400px] md:min-h-[700px] max-w-[550px] md:shadow-2xl rounded-4xl shadow-[#ffffff23] m-auto flex-col justify-center items-center md:py-10 ">
                 <div className="flex py-2 w-full items-center flex-col gap-4 ">
                     <User color="white" className="border-1 p-2 rounded-[15px]" size={50} strokeWidth={1} />
                     <h2 className="text-white text-5xl w-full font-semibold text-center">Inicia sesión</h2>
@@ -126,7 +126,7 @@ export default function SignIn() {
                         <button className="bg-white cursor-pointer hover:bg-[#ffffffd1] text-black p-2 mt-5 rounded-[7px] font-medium" type="submit">Iniciar sesión</button>
                     </form>
 
-                    <span className="text-[#ffffff77]">¿Todavía no tenés una cuenta? <Link className="text-white font-medium hover:underline" to="/signUp"> Registrate acá</Link></span>
+                    <span className="text-[#ffffff77] text-center">¿Todavía no tenés una cuenta? <Link className="text-white font-medium hover:underline" to="/signUp"> Registrate acá</Link></span>
 
                 </div>
             </div>
