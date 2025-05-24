@@ -15,11 +15,23 @@ import AlertDialogComponent from "./AlertDialogComponent";
 import type { ApiData } from "@/types/ApiData";
 import { useContext } from "react";
 import { CarritoContext } from "@/contexts/carrito/CarritoContext";
+import { UserContext } from "@/contexts/user/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export default function CartMenu() {
 
     const { carrito, setCarrito, calcularTotal, calcularTotalCarrito } = useContext(CarritoContext);
+    const { usuario } = useContext(UserContext);
 
+    const Navigate = useNavigate();
+
+    const payProducts = () => {
+        if (usuario) {
+            Navigate('/checkout')
+        } else {
+            Navigate('/sign-in')
+        }
+    }
 
     const incrementarCantidad = (item: ApiData): void => {
         setCarrito((prevCart) => {
@@ -85,7 +97,10 @@ export default function CartMenu() {
                                     <span className="text-[20px] ">Total</span>
                                     <span className="text-[20px]">${calcularTotalCarrito()}</span>
                                 </div>
-                                <button type="button" className="bg-[white] text-black font-medium text-[18px] w-full m-auto p-1.5 rounded-[7px] cursor-pointer hover:bg-black transition-all hover:text-white">Pagar</button>
+
+                                <button onClick={payProducts} type="button" className="bg-[white] text-black font-medium text-[18px] w-full text-center m-auto p-1.5 rounded-[7px] cursor-pointer hover:bg-black transition-all hover:text-white">
+                                    Pagar
+                                </button>
                             </div>}
                         </div>
                     </SheetDescription>

@@ -1,18 +1,20 @@
 import Main from "@/components/Main";
-import { Link } from "react-router-dom";
-import { useForm } from 'react-hook-form'
+import { Link, useNavigate } from "react-router-dom";
+import { useForm, type SubmitHandler } from 'react-hook-form'
 import { EyeClosed } from 'lucide-react';
 import { Eye } from 'lucide-react';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { User } from 'lucide-react';
-
-
+import { UserContext } from "@/contexts/user/UserContext";
 interface FormData {
     email: string;
     password: string
 }
 
 export default function SignIn() {
+
+    const { setUsuario } = useContext(UserContext);
+    const navigate = useNavigate();
 
     const messages = {
         req: "Este campo es obligatorio",
@@ -26,8 +28,19 @@ export default function SignIn() {
         formState: { errors }, reset
     } = useForm<FormData>();
 
-    const onSubmit = handleSubmit(() => {
+    const onSubmit: SubmitHandler<FormData> = ((data) => {
+
+        const user = {
+            nombre: 'Ezequiel',
+            apellido: 'Luci',
+            email: data.email,
+            password: data.password,
+
+        }
+
+        setUsuario(user);
         reset();
+        navigate(`/`)
     })
 
     const setToggleIcon = (): void => {
@@ -38,7 +51,7 @@ export default function SignIn() {
 
     return (
         <Main>
-            <div className="flex bg-[#000000d6] w-full py-12 max-w-[600px] shadow-2xl rounded-2xl shadow-[#ffffff23] m-auto flex-col justify-center items-center ">
+            <div className="flex bg-[#000000d6] w-full h-full min-h-[780px] max-w-[550px] shadow-2xl rounded-4xl shadow-[#ffffff23] m-auto flex-col justify-center items-center ">
                 <div className="flex py-2 w-full items-center flex-col gap-4 ">
                     <User color="white" className="border-1 p-2 rounded-[15px]" size={50} strokeWidth={1} />
                     <h2 className="text-white text-5xl w-full font-semibold text-center">Inicia sesión</h2>
@@ -47,13 +60,11 @@ export default function SignIn() {
                 <div className="flex text-white flex-col rounded-2xl items-center  w-full max-w-[800px] gap-15">
                     <h2 className="text-6xl font-semibold "></h2>
 
-                    <form onSubmit={onSubmit}
-                        action="/home"
-                        method="POST"
+                    <form onSubmit={handleSubmit(onSubmit)}
                         className="flex flex-col  max-w-96 w-full gap-6">
 
 
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-3">
 
                             <label
                                 htmlFor="email"
@@ -64,7 +75,7 @@ export default function SignIn() {
                                 id="email"
                                 className={`border-1 bg-black  p-3 rounded-[7px] outline-0 ${errors.email ? ' border-red-500' : 'border-[#ffffff7c]'} `}
                                 type="email"
-                                placeholder="Ingrese su direccion de email"
+                                placeholder="Ingresá tu direccion de email"
                                 {...register("email",
                                     {
                                         required: messages.req,
@@ -100,7 +111,7 @@ export default function SignIn() {
                                         },
                                     }
                                 )}
-                                placeholder="Ingrese su contraseña"
+                                placeholder="Ingresá tu contraseña"
                             />
                             <div onClick={setToggleIcon} className="absolute bottom-0 right-4 top-12 cursor-pointer">
                                 {hidden !== 'text' ? <EyeClosed size={20} /> : <Eye size={20} />}

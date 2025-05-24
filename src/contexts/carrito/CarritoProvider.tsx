@@ -9,6 +9,7 @@ interface Props {
 
 export const CarritoProvider = ({ children }: Props) => {
 
+
     const [carrito, setCarrito] = useState<ApiData[]>(() => {
         try {
             const storedCart = localStorage.getItem('carrito');
@@ -25,6 +26,7 @@ export const CarritoProvider = ({ children }: Props) => {
 
     const addToCart = (item: ApiData): void => {
 
+
         setCarrito(prevCart => {
             const exist = carrito.find(element => element.id === item.id);
 
@@ -35,10 +37,12 @@ export const CarritoProvider = ({ children }: Props) => {
                 return [...prevCart, { ...item, quantity: 1 }]
             }
         })
+
         toast.success(`Producto agregado con exito!`, {
             description: `${item.title}`
         });
-        localStorage.setItem("cart", JSON.stringify(carrito))
+
+        localStorage.setItem("carrito", JSON.stringify(carrito))
     }
 
     const calcularTotalCarrito = (): string => {

@@ -11,7 +11,7 @@ export default function Producto() {
     return (
         <>
             <Main>
-                <div className='flex flex-col  p-3 w-fit min-w-[350px] gap-7 h-fit'>
+                <div className='flex flex-col w-fit min-w-[350px] gap-7 h-fit'>
                     <Title text="Nuestros productos" />
                     <Filter setFilter={setFilter} />
                 </div>

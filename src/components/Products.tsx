@@ -44,11 +44,10 @@ export default function Products({ size, filter }: ProductsProps) {
     }
 
     return (
-
         <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] 
-        gap-4 w-full justify-start h-fit p-5 bg-[#0e0e11] rounded-[7px]" >
+        gap-4 w-full justify-start h-fit p-5 rounded-[7px]" >
             {loading ? (
-                <SkeletonCard grid={size ?? 4} />
+                <SkeletonCard grid={size ?? 5} />
             ) : (
                 data != null &&
                 data.filter((element) => filter === 'All' || element.category === filter || !filter).slice(0, size ?? data.length).map((product) => (
