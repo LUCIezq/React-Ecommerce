@@ -24,7 +24,13 @@ export default function PopoverFavorites() {
         <Popover>
             <PopoverTrigger asChild>
                 <Button variant="default" aria-label="favoritos" className="cursor-pointer bg-transparent">
-                    <Heart strokeWidth={2} color="white" />
+                    <div className="relative">
+                        <Heart strokeWidth={2} color="white" />
+                        {
+                            favoritos.length > 0 && <div className="bg-white w-[5px] h-[5px] rounded-full absolute top-[0] right-[-1px]"></div>
+                        }
+                    </div>
+
                 </Button>
             </PopoverTrigger>
             <PopoverContent className="w-96 mt-3 mr-5 border-[#ffffff39] bg-[black] ">

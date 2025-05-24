@@ -11,10 +11,20 @@ import { useContext } from "react";
 import { User } from 'lucide-react';
 import { ShoppingBag } from 'lucide-react';
 import { LogOut } from 'lucide-react';
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 
 export default function DropDownUser() {
     const { usuario } = useContext(UserContext);
+    const { setUsuario } = useContext(UserContext);
+    const navigate = useNavigate();
+
+    const cerrarSesion = () => {
+        setUsuario(null);
+        navigate('/');
+        toast.success('Sesión cerrada con exito')
+    }
 
     return (
         <DropdownMenu>
@@ -31,17 +41,25 @@ export default function DropDownUser() {
 
                 <DropdownMenuSeparator />
 
-                <div className="flex flex-col gap-2.5">
-                    <DropdownMenuItem className="cursor-pointer text-[15px] ">
-                        <User color="white" />
-                        Perfil</DropdownMenuItem>
-                    <DropdownMenuItem className="cursor-pointer text-[15px] ">
-                        <ShoppingBag color="white" />
-                        Mis compras</DropdownMenuItem>
+                <div className="flex flex-col gap-2">
+                    <Link to='/perfil'>
+
+                        <DropdownMenuItem className="cursor-pointer text-[15px] font-medium ">
+                            <User color="white" strokeWidth={2} />
+                            Perfil
+                        </DropdownMenuItem>
+                    </Link>
+
+                    <Link to='/perfil/compras'>
+                        <DropdownMenuItem className="cursor-pointer text-[15px] font-medium ">
+                            <ShoppingBag color="white" />
+                            Mis compras
+                        </DropdownMenuItem>
+                    </Link>
 
                     <DropdownMenuSeparator />
 
-                    <DropdownMenuItem className="cursor-pointer text-[15px]">
+                    <DropdownMenuItem onClick={cerrarSesion} className="cursor-pointer  font-medium text-[15px]">
                         <LogOut color="white" />
                         Cerrar sesión</DropdownMenuItem>
                 </div>
