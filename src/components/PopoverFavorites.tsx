@@ -23,7 +23,7 @@ export default function PopoverFavorites() {
 
         <Popover>
             <PopoverTrigger asChild>
-                <Button variant="default" className="cursor-pointer">
+                <Button variant="default" aria-label="favoritos" className="cursor-pointer">
                     <Heart strokeWidth={2} color="white" />
                 </Button>
             </PopoverTrigger>
