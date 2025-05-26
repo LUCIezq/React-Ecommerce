@@ -5,8 +5,8 @@ import { useContext } from "react";
 import { User } from 'lucide-react';
 import { UserContext } from "@/contexts/user/UserContext";
 import type { FormData } from "@/types/FormData";
-import { CreateUser } from "@/utils/createUser";
 import { Form } from "@/components/Form";
+import { CreateUser } from "@/utils/CreateUser";
 
 
 export default function SignIn() {

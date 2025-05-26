@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { FormProvider, useForm, type SubmitHandler } from 'react-hook-form';
 import type { FormData } from '@/types/FormData';
 import { Label } from './Label';
-import { Input } from './input';
+import { Input } from './Input';
 
 interface FormProps {
     onSubmit: SubmitHandler<FormData>

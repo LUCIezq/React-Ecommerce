@@ -7,7 +7,6 @@ import {
 import { FavoritosContext } from "@/contexts/favoritos/FavoritosContext";
 import { Heart, Trash } from "lucide-react"
 import { useContext } from "react";
-import { Trash2 } from "lucide-react";
 import type { ApiData } from "@/types/ApiData";
 export default function PopoverFavorites() {
 
