@@ -30,14 +30,14 @@ export default function AlertDialogComponent({ item }: Alert) {
             <AlertDialogTrigger  >
                 <Trash2 strokeWidth={2} size={18} className="cursor-pointer hover:text-white transition-all" />
             </AlertDialogTrigger>
-            <AlertDialogContent className="bg-[#09090b] w-[min(350px,100%)] border-[#ffffff26]">
+            <AlertDialogContent className="bg-[#09090b] w-[min(370px,100%)] border-[#ffffff26]">
                 <AlertDialogHeader>
                     <AlertDialogTitle className="text-white">¿Seguro que querés eliminar este producto?</AlertDialogTitle>
                     <AlertDialogDescription className="text-white">
                         Una vez eliminado, no vas a poder recuperarlo.
                     </AlertDialogDescription>
                 </AlertDialogHeader>
-                <AlertDialogFooter>
+                <AlertDialogFooter className="m-auto">
                     <AlertDialogCancel className="cursor-pointer">Cancelar</AlertDialogCancel>
                     <AlertDialogAction onClick={() => deleteElement(item)} className="hover:bg-red-800 cursor-pointer">Continuar</AlertDialogAction>
                 </AlertDialogFooter>

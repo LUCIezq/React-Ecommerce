@@ -5,7 +5,7 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 import { FavoritosContext } from "@/contexts/favoritos/FavoritosContext";
-import { Heart } from "lucide-react"
+import { Heart, Trash } from "lucide-react"
 import { useContext } from "react";
 import { Trash2 } from "lucide-react";
 import type { ApiData } from "@/types/ApiData";
@@ -45,10 +45,10 @@ export default function PopoverFavorites() {
                         <div key={e.id} className="text-white flex justify-between items-center bg-[#09090b33] rounded-[5px] py-3 px-4">
                             <div className="grid gap-1" >
                                 <span className="text-[13px] text-[#ffffff8f]" >{e.category}</span>
-                                <h2 className="font-medium text-[16px] max-w-[270px]">{e.title}</h2>
+                                <h2 className="font-medium text-[14px] max-w-[270px]">{e.title}</h2>
                                 <span className="pt-1.5 font-medium"> ${e.price}</span>
                             </div>
-                            <Trash2 onClick={() => eliminarFavorito(e)} strokeWidth={2} size={20} className="cursor-pointer" />
+                            <Trash onClick={() => eliminarFavorito(e)} strokeWidth={2} size={20} className="cursor-pointer" />
                         </div>
                     )}
 

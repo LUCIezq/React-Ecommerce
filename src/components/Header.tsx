@@ -38,7 +38,7 @@ export default function Header() {
                 {
                     usuario == null ? <Link className=" font-medium text-[14px] transition-all border-1 border-white px-2 py-1.5 rounded-2xl hover:bg-white hover:text-black" to="/sign-in" >Iniciar sesion</Link> : <DropDownUser />
                 }
-                <div className="flex gap-5">
+                <div className="flex">
                     <CartMenu />
                     {usuario != null ? <PopoverFavorites /> : <></>}
                 </div>

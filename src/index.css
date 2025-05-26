@@ -117,9 +117,19 @@
   body {
     @apply bg-background text-foreground;
   }
+  ::-webkit-scrollbar {
+  width: 8px;
 }
 
-::-webkit-scrollbar { 
-    /* Personaliza el ancho de la barra de desplazamiento */ 
-    display: none;
-} 
+::-webkit-scrollbar-thumb {
+  background: #626262;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+}
+}
