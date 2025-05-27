@@ -1,10 +1,14 @@
 import type { RegisterOptions } from "react-hook-form";
 
-export interface DataLoginProps {
+type DataProps = {
     id: string;
     type: 'text' | 'email' | 'password';
     placeholder: string;
-    name:string;
+    name: string;
     label: string;
-    Rules?:RegisterOptions
+    Rules?: RegisterOptions
+}
+export interface DataLoginProps {
+    data: DataProps[];
+    button?: string;
 }

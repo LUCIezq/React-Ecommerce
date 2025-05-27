@@ -11,8 +11,7 @@ export const Input = ({ id, type, placeholder, name, rules }: InputProps) => {
                 className={`w-full border-1 bg-black  p-3 rounded-[7px] outline-0 ${errors[name] ? ' border-red-500' : 'border-[#ffffff7c]'} `}
                 type={type}
                 placeholder={placeholder}
-                {...register((name), rules)}
-                name={name}
+                {...register(name, rules)}
             />
 
             {errors[name] && <p className="text-red-700 text-[15px]">{errors[name].message?.toString()}</p>}
