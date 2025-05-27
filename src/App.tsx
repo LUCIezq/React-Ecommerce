@@ -8,6 +8,7 @@ import SignIn from "./pages/SignIn"
 import Perfil from "./pages/Perfil"
 import { RutaProtegida } from "./utils/RutaProtegida"
 import Checkout from "./pages/Checkout"
+import SignUp from "./pages/SignUp"
 
 
 export default function App() {
@@ -21,6 +22,8 @@ export default function App() {
         <Route path="/productos" element={<Producto />} ></Route>
         <Route path="/contacto" element={<Contacto />} ></Route>
         <Route path="/sign-in" element={<SignIn />} ></Route>
+        <Route path="/sign-up" element={<SignUp />} ></Route>
+
 
         <Route path="/perfil" element={
           <RutaProtegida>

@@ -7,7 +7,7 @@ import { UserContext } from "@/contexts/user/UserContext";
 import type { FormData } from "@/types/FormData";
 import { Form } from "@/components/Form";
 import { CreateUser } from "@/utils/CreateUser";
-
+import { DataLogin } from "@/data/FormData";
 
 export default function SignIn() {
 
@@ -35,8 +35,8 @@ export default function SignIn() {
                 </div>
 
                 <div className="flex text-white flex-col rounded-2xl items-center w-full max-w-[800px] gap-10">
-                    <Form onSubmit={onSubmit} />
-                    <span className="text-[#ffffff77] text-center">¿Todavía no tenés una cuenta? <Link className="text-white font-medium" to="/signUp"> Registrate acá</Link></span>
+                    <Form onSubmit={onSubmit} data={DataLogin} />
+                    <span className="text-[#ffffff77] text-center">¿Todavía no tenés una cuenta? <Link className="text-white font-medium" to="/sign-up"> Registrate acá</Link></span>
                 </div>
 
             </div>
