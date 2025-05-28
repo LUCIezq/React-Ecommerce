@@ -12,7 +12,7 @@ export default function NavBar({ setHidden }: Props) {
             flex-col gap-7 md:relative bg-[#0a0a0d] md:flex-row md:bg-transparent md:p-0 md:gap-10">
 
             {navLinks.map((link: NavLinkItem) => (
-                <li onClick={() => setHidden(true)} className="text-5xl md:text-[20px]"
+                <li onClick={() => setHidden(true)} className="text-5xl md:text-[17px]"
                     key={link.id}>
                     <NavLink className={({ isActive }) =>
                         `px-4 py-2 text-white  hover:underline underline-offset-8 ${isActive ? "underline decoration-white" : ''}`}

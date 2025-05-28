@@ -6,6 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { FavoritosProvider } from "./contexts/favoritos/FavoritosProvider"
 import { CarritoProvider } from './contexts/carrito/CarritoProvider.tsx'
 import { UserProvider } from './contexts/user/UserProvider.tsx'
+import { UsuariosProvider } from './contexts/users/UsuariosProvider.tsx'
 
 
 createRoot(document.getElementById('root')!).render(
@@ -14,7 +15,9 @@ createRoot(document.getElementById('root')!).render(
       <UserProvider>
         <CarritoProvider>
           <FavoritosProvider>
-            <App />
+            <UsuariosProvider>
+              <App />
+            </UsuariosProvider>
           </FavoritosProvider>
         </CarritoProvider>
       </UserProvider>

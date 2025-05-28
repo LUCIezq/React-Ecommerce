@@ -1,14 +1,35 @@
 import { Form } from "@/components/Form";
 import Main from "@/components/Main";
+import { UsuariosContext } from "@/contexts/users/UsuariosContext";
 import { DataSignUp } from "@/data/FormData";
+import type { FormDataSignUp } from "@/types/FormData";
+import { CreateUser } from "@/utils/CreateUser";
 import { User } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { type SubmitHandler } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 export default function SignUp() {
 
+    const { usuarios, setUsuarios } = useContext(UsuariosContext);
+    const navigate = useNavigate();
+
+    const handleRegistrar: SubmitHandler<FormDataSignUp> = (data) => {
+        const userExist = usuarios?.some((usuario => usuario.email === data.email));
+
+        if (!userExist) {
+
+            setUsuarios((prevValue) => [...prevValue, CreateUser(data)]);
+
+            toast.success('Registro existoso')
+            navigate('/sign-in');
+        }
+    }
+
     return (
         <Main>
-            <div className="flex md:bg-[#000000d6] w-full h-full min-h-[400px] md:min-h-[700px] max-w-[550px] gap-4 md:shadow-2xl rounded-4xl shadow-[#ffffff23] m-auto flex-col justify-center items-center pb-7  md:py-10 ">
+            <div className="flex gap-10 w-full m-auto flex-col justify-center items-center pb-7  md:py-10 ">
                 <div className="flex w-full items-center flex-col gap-4 ">
                     <User
                         color="white"
@@ -24,7 +45,7 @@ export default function SignUp() {
                             ¿Ya tenés una cuenta?
                         </span>
                         <Link
-                            className="text-white font-medium hover:underline"
+                            className="text-white font-medium underline underline-offset-2"
                             to="/sign-in"
                         >
                             Inicia sesión
@@ -32,8 +53,7 @@ export default function SignUp() {
                     </div>
 
                 </div>
-
-                <Form data={DataSignUp} onSubmit={() => console.log('registrado')} />
+                <Form data={DataSignUp} onSubmit={handleRegistrar} />
             </div>
 
         </Main>

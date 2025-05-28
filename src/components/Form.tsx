@@ -19,6 +19,7 @@ export const Form = ({ onSubmit, data }: FormProps) => {
     };
 
     return (
+        //usamos esto para que todos los componentes hijos puedan acceder a los metodos de react-hook-form.
         <FormProvider {...methods}>
             <form
                 onSubmit={methods.handleSubmit(onSubmit)}
@@ -45,7 +46,7 @@ export const Form = ({ onSubmit, data }: FormProps) => {
                 }
 
                 <button
-                    className="bg-white cursor-pointer hover:bg-[#ffffffd1] text-black p-2 mt-5 rounded-[7px] font-medium"
+                    className="bg-white cursor-pointer hover:bg-[#ffffffee] text-black p-2 mt-10 rounded-[7px] font-medium"
                     type="submit"
                 >
                     {data.button}

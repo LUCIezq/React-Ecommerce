@@ -1,5 +1,7 @@
 import type { DataLoginProps } from "@/types/DataLoginProps";
+import type { User } from "@/types/User";
 import { MessagesForm } from "@/utils/MessagesForm";
+
 
 export const DataLogin: DataLoginProps = {
     button: 'Iniciar sesión',
@@ -36,6 +38,7 @@ export const DataLogin: DataLoginProps = {
 }
 
 export const DataSignUp: DataLoginProps = {
+
     button: 'Registrarse',
     data: [
         {
@@ -66,6 +69,8 @@ export const DataSignUp: DataLoginProps = {
                 }
             }
         },
+
+        // 
         {
             id: 'email',
             type: "email",
@@ -77,6 +82,10 @@ export const DataSignUp: DataLoginProps = {
                 pattern: {
                     value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                     message: MessagesForm.email
+                },
+                validate: (value) => {
+                    const usuarios: User[] = JSON.parse(localStorage.getItem('usuarios') || '[]');
+                    return usuarios.some((usuario => usuario.email === value)) ? MessagesForm.emailExist : true
                 }
             }
         },
