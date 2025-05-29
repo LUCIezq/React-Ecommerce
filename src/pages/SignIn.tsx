@@ -1,17 +1,19 @@
 import Main from "@/components/Main";
 import { Link, useNavigate } from "react-router-dom";
-import { type SubmitHandler } from 'react-hook-form'
+import { useForm, type SubmitHandler } from 'react-hook-form'
 import { useContext } from "react";
 import { User } from 'lucide-react';
 import { UserContext } from "@/contexts/user/UserContext";
-import type { FormData } from "@/types/FormData";
+import type { FormData, FormDataSignUp } from "@/types/FormData";
 import { Form } from "@/components/Form";
 import { DataLogin } from "@/data/FormData";
 import { UsuariosContext } from "@/contexts/users/UsuariosContext";
-import { toast } from "sonner";
 
 export default function SignIn() {
 
+    const methods = useForm<FormDataSignUp>({
+        mode: 'onChange'
+    }); //obtenemos todos los metodos de react-hook-form para mandarlos al FormProvider y a todos sus componentes hijos.
     const { setUsuario } = useContext(UserContext);
     const navigate = useNavigate();
 
@@ -27,16 +29,22 @@ export default function SignIn() {
                 setUsuario(userExist);
                 navigate(`/`);
             } else {
-                toast.error('La contraseña que has introducido es incorrecta');
+                methods.setError('password', {
+                    type: 'manual',
+                    message: 'La contraseña que has introducido es incorrecta.'
+                });
             }
         } else {
-            toast.error('El correo electrónico que has introducido no está conectado a una cuenta');
+            methods.setError('email', {
+                type: 'manual',
+                message: 'El correo electrónico que has introducido no está conectado a una cuenta.'
+            });
         }
     })
 
     return (
         <Main>
-            <div className="flex w-full h-full md:min-h-[700px] m-auto flex-col justify-center items-center pb-7 gap-12 md:py-10 ">
+            <div className="flex w-full h-full md:min-h-[700px] m-auto flex-col justify-center items-center pb-7 gap-4 md:py-10 ">
 
                 <div className="flex w-full items-center flex-col gap-4 ">
                     <User color="white" className="border-1 p-2 rounded-[15px]" size={50} strokeWidth={1} />
@@ -47,7 +55,9 @@ export default function SignIn() {
                     </div>
                 </div>
 
-                <Form onSubmit={handleLoguear} data={DataLogin} />
+                <Form methods={methods} onSubmit={handleLoguear} data={DataLogin} />
+
+                <Link className="text-[#ffffff] hover:underline underline-offset-2" to={'/recovery'}>¿Olvidaste tu contraseña?</Link>
 
             </div>
         </Main>

@@ -4,9 +4,10 @@ import { UsuariosContext } from "@/contexts/users/UsuariosContext";
 import { DataSignUp } from "@/data/FormData";
 import type { FormDataSignUp } from "@/types/FormData";
 import { CreateUser } from "@/utils/CreateUser";
+import { MessagesForm } from "@/utils/MessagesForm";
 import { User } from "lucide-react";
 import { useContext } from "react";
-import { type SubmitHandler } from "react-hook-form";
+import { useForm, type SubmitHandler } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
@@ -14,6 +15,9 @@ export default function SignUp() {
 
     const { usuarios, setUsuarios } = useContext(UsuariosContext);
     const navigate = useNavigate();
+    const methods = useForm<FormDataSignUp>({
+        mode: 'onChange'
+    }); //obtenemos todos los metodos de react-hook-form para mandarlos al FormProvider y a todos sus componentes hijos.
 
     const handleRegistrar: SubmitHandler<FormDataSignUp> = (data) => {
         const userExist = usuarios?.some((usuario => usuario.email === data.email));
@@ -24,12 +28,17 @@ export default function SignUp() {
 
             toast.success('Registro existoso')
             navigate('/sign-in');
+        } else {
+            methods.setError('email', {
+                type: 'manual',
+                message: MessagesForm.emailExist
+            });
         }
     }
 
     return (
         <Main>
-            <div className="flex gap-10 w-full m-auto flex-col justify-center items-center pb-7  md:py-10 ">
+            <div className="flex w-full m-auto flex-col justify-center items-center pb-7  md:py-10 ">
                 <div className="flex w-full items-center flex-col gap-4 ">
                     <User
                         color="white"
@@ -53,9 +62,8 @@ export default function SignUp() {
                     </div>
 
                 </div>
-                <Form data={DataSignUp} onSubmit={handleRegistrar} />
+                <Form data={DataSignUp} onSubmit={handleRegistrar} methods={methods} />
             </div>
-
         </Main>
     );
 }

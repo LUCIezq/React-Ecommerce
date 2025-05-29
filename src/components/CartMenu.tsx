@@ -11,7 +11,7 @@ import { Minus } from 'lucide-react';
 import CartEmpty from "./CartEmpty";
 import AlertDialogComponent from "./AlertDialogComponent";
 import type { ApiData } from "@/types/ApiData";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CarritoContext } from "@/contexts/carrito/CarritoContext";
 import { UserContext } from "@/contexts/user/UserContext";
 import { useNavigate } from "react-router-dom";
@@ -22,14 +22,17 @@ export default function CartMenu() {
 
     const { carrito, setCarrito, calcularTotal, calcularTotalCarrito } = useContext(CarritoContext);
     const { usuario } = useContext(UserContext);
+    const [open, setOpen] = useState(false);
 
     const Navigate = useNavigate();
 
     const payProducts = () => {
-        if (usuario) {
-            Navigate('/checkout')
-        } else {
+        setOpen(false);
+
+        if (!usuario) {
             Navigate('/sign-in')
+        } else {
+            Navigate('/checkout');
         }
     }
 
@@ -50,13 +53,15 @@ export default function CartMenu() {
     }
 
     return (
-        <Sheet >
+
+        <Sheet open={open} onOpenChange={(value) => setOpen(value)}>
             <SheetTrigger className="flex items-center gap-1">
                 <ShoppingBag strokeWidth={1} size={20} className="cursor-pointer" />
                 <span className=" cursor-pointer font-medium text-center text-[#ffffff]">
                     {calcularTotal()}
                 </span>
             </SheetTrigger>
+
             <SheetContent className="bg-[black] border-l-1 border-[#ffffff20]">
                 <SheetHeader className="flex gap-5 h-full">
                     <SheetTitle className="text-2xl text-white pb-2">Carrito</SheetTitle>
@@ -96,7 +101,8 @@ export default function CartMenu() {
                                     <span className="text-[20px]">${calcularTotalCarrito()}</span>
                                 </div>
 
-                                <button onClick={payProducts} type="button" className="bg-[white] text-black font-medium text-[18px] w-full text-center m-auto p-1.5 rounded-[7px] cursor-pointer hover:bg-black transition-all hover:text-white">
+                                <button onClick={payProducts} type="button" className="bg-[white] text-black font-medium text-[18px] w-full text-center m-auto p-1.5 rounded-[7px] cursor-pointer 
+                                border-1 transition-all hover:bg-transparent hover:text-white">
                                     Pagar
                                 </button>
                             </div>}
@@ -104,6 +110,7 @@ export default function CartMenu() {
                     </SheetDescription>
                 </SheetHeader>
             </SheetContent>
+
         </Sheet>
     )
 }

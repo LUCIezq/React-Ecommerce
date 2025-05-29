@@ -1,5 +1,4 @@
 import type { DataLoginProps } from "@/types/DataLoginProps";
-import type { User } from "@/types/User";
 import { MessagesForm } from "@/utils/MessagesForm";
 
 
@@ -13,7 +12,7 @@ export const DataLogin: DataLoginProps = {
             placeholder: 'alguien@algo.com',
             label: 'Email',
             Rules: {
-                required: MessagesForm.req,
+                required: true,
                 pattern: {
                     value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                     message: MessagesForm.email
@@ -27,7 +26,7 @@ export const DataLogin: DataLoginProps = {
             placeholder: '********',
             label: 'Contraseña',
             Rules: {
-                required: MessagesForm.req,
+                required: true,
                 minLength: {
                     value: 8,
                     message: MessagesForm.password
@@ -48,7 +47,7 @@ export const DataSignUp: DataLoginProps = {
             placeholder: '@alguien',
             label: 'Nombre',
             Rules: {
-                required: MessagesForm.req,
+                required: true,
                 minLength: {
                     value: 4,
                     message: MessagesForm.name
@@ -62,7 +61,7 @@ export const DataSignUp: DataLoginProps = {
             placeholder: '@algo',
             label: 'Apellido',
             Rules: {
-                required: MessagesForm.req,
+                required: true,
                 minLength: {
                     value: 3,
                     message: MessagesForm.apellido
@@ -78,14 +77,10 @@ export const DataSignUp: DataLoginProps = {
             placeholder: 'alguien@algo.com',
             label: 'Email',
             Rules: {
-                required: MessagesForm.req,
+                required: true,
                 pattern: {
                     value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                     message: MessagesForm.email
-                },
-                validate: (value) => {
-                    const usuarios: User[] = JSON.parse(localStorage.getItem('usuarios') || '[]');
-                    return usuarios.some((usuario => usuario.email === value)) ? MessagesForm.emailExist : true
                 }
             }
         },
@@ -96,7 +91,7 @@ export const DataSignUp: DataLoginProps = {
             placeholder: '********',
             label: 'Contraseña',
             Rules: {
-                required: MessagesForm.req,
+                required: true,
                 minLength: {
                     value: 8,
                     message: MessagesForm.password
@@ -110,8 +105,7 @@ export const DataSignUp: DataLoginProps = {
             placeholder: '********',
             label: 'Confirmar contraseña',
             Rules: {
-                required: MessagesForm.req,
-                validate: (value) => value === 'ezequiel' || MessagesForm.repeatPassword
+                required: true,
             }
         }
     ]

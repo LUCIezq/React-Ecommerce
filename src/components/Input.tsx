@@ -14,7 +14,7 @@ export const Input = ({ id, type, placeholder, name, rules }: InputProps) => {
                 {...register(name, rules)}
             />
 
-            {errors[name] && <p className="text-red-700 text-[15px]">{errors[name].message?.toString()}</p>}
+            {errors[name]?.message && <p className="text-red-700 text-[15px]">{errors[name].message?.toString()}</p>}
         </>
     )
 }

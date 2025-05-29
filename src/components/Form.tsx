@@ -1,16 +1,12 @@
 import { EyeClosed } from "lucide-react";
 import { Eye } from "lucide-react";
 import { useState } from "react";
-import { FormProvider, useForm } from "react-hook-form";
-import type { FormDataSignUp } from "@/types/FormData";
+import { FormProvider } from "react-hook-form";
 import { Label } from "./Label";
 import { Input } from "./Input";
 import type { FormProps } from "@/types/FormProps";
 
-
-export const Form = ({ onSubmit, data }: FormProps) => {
-
-    const methods = useForm<FormDataSignUp>(); //obtenemos todos los metodos de react-hook-form para mandarlos al FormProvider y a todos sus componentes hijos.
+export const Form = ({ onSubmit, data, methods }: FormProps) => {
 
     const [toggle, setToggle] = useState<boolean>(true);
 
@@ -23,7 +19,7 @@ export const Form = ({ onSubmit, data }: FormProps) => {
         <FormProvider {...methods}>
             <form
                 onSubmit={methods.handleSubmit(onSubmit)}
-                className="flex text-white flex-col max-w-96 w-full gap-4"
+                className="flex text-white flex-col max-w-96 w-full gap-4 mt-10"
             >
                 {
                     data.data.map((item) => (
