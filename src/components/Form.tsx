@@ -1,6 +1,6 @@
 import { EyeClosed } from "lucide-react";
 import { Eye } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FormProvider } from "react-hook-form";
 import { Label } from "./Label";
 import { Input } from "./Input";
@@ -13,6 +13,21 @@ export const Form = ({ onSubmit, data, methods }: FormProps) => {
     const setToggleIcon = (): void => {
         setToggle(!toggle);
     };
+    const confirmPassword = methods.watch('confirmPassword');
+    const password = methods.watch('password');
+
+    useEffect(() => {
+        if (confirmPassword && password !== confirmPassword) {
+            methods.setError('confirmPassword',
+                {
+                    type: 'manual',
+                    message: 'Las contraseñas no coinciden.'
+                }
+            )
+        } else {
+            methods.clearErrors('confirmPassword');
+        }
+    }, [password, confirmPassword, methods]);
 
     return (
         //usamos esto para que todos los componentes hijos puedan acceder a los metodos de react-hook-form.
@@ -22,10 +37,17 @@ export const Form = ({ onSubmit, data, methods }: FormProps) => {
                 className="flex text-white flex-col max-w-96 w-full gap-4 mt-10"
             >
                 {
-                    data.data.map((item) => (
-                        <div key={item.id} className="flex flex-col gap-3 w-full relative">
-                            <Label name={item.name} label={item.label} />
-                            <Input id={item.id} name={item.name} placeholder={item.placeholder} type={item.type} rules={item.Rules} />
+                    data.data.map((item) => {
+                        const extraRules =
+                            item.name === "confirmPassword"
+                                ? {
+                                    validate: (value: string) =>
+                                        value === methods.watch("password") || "Las contraseñas no coinciden",
+                                }
+                                : {};
+                        return <div key={item.id} className="flex flex-col gap-3 w-full relative">
+                            <Label {...item} />
+                            <Input {...item} rules={{ ...item.Rules, ...extraRules }} />
 
                             {
                                 item.type === "password" && (
@@ -38,7 +60,7 @@ export const Form = ({ onSubmit, data, methods }: FormProps) => {
                                 )
                             }
                         </div>
-                    ))
+                    })
                 }
 
                 <button

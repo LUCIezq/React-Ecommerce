@@ -11,9 +11,10 @@ import { UsuariosContext } from "@/contexts/users/UsuariosContext";
 
 export default function SignIn() {
 
+    //obtenemos todos los metodos de react-hook-form para mandarlos al FormProvider y a todos sus componentes hijos.
     const methods = useForm<FormDataSignUp>({
         mode: 'onChange'
-    }); //obtenemos todos los metodos de react-hook-form para mandarlos al FormProvider y a todos sus componentes hijos.
+    });
     const { setUsuario } = useContext(UserContext);
     const navigate = useNavigate();
 

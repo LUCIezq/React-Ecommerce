@@ -87,7 +87,7 @@ export const DataSignUp: DataLoginProps = {
         {
             id: 'password',
             name: 'password',
-            type: 'password',
+            type: 'text',
             placeholder: '********',
             label: 'Contraseña',
             Rules: {
@@ -99,9 +99,9 @@ export const DataSignUp: DataLoginProps = {
             }
         },
         {
-            id: 'repeatPassword',
-            name: 'repeatPassword',
-            type: 'password',
+            id: 'confirmPassword',
+            name: 'confirmPassword',
+            type: 'text',
             placeholder: '********',
             label: 'Confirmar contraseña',
             Rules: {
