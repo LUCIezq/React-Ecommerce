@@ -1,41 +1,14 @@
-import { useState, useEffect } from "react"
 import Product from "./Product";
 import { SkeletonCard } from "./SkeletonCard";
-import type { ApiData } from "@/types/ApiData";
 import type { ProductsProps } from "@/types/ProductsProps";
+import { useFetch } from "@/hooks/use-fetch";
+import type { ApiData } from "@/types/ApiData";
 
 export default function Products({ size, filter }: ProductsProps) {
 
-    const [data, setData] = useState<ApiData[] | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<boolean>(true);
-
     const URL = "https://fakestoreapi.com/products";
+    const { data, loading, error } = useFetch<ApiData[]>(URL);
 
-
-    const fetchData = async () => {
-        setError(false);
-        setLoading(true);
-        try {
-            const response = await fetch(URL);
-
-            if (!response.ok) {
-                throw new Error("Error al obtener los datos.");
-            }
-            const dataJson = await response.json();
-            setData(dataJson);
-
-        } catch (err) {
-            console.log("Hubo un error al cargar los datos: ", err);
-            setError(true);
-        } finally {
-            setLoading(false)
-        }
-    }
-
-    useEffect(() => {
-        fetchData();
-    }, [])
 
     if (error) {
         return (<div className="flex items-center  h-full justify-center  w-full">
