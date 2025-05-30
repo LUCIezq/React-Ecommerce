@@ -1,5 +1,6 @@
-import { useEffect, useState, type JSX } from "react";
+import { type JSX } from "react";
 import { UserContext } from "./UserContext";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 interface UserProviderProps {
     children: JSX.Element | JSX.Element[];
@@ -14,25 +15,7 @@ interface Usuario {
 
 export const UserProvider = ({ children }: UserProviderProps) => {
 
-    const [usuario, setUsuario] = useState<Usuario | null>(() => {
-
-        try {
-            const usuarioStored = localStorage.getItem('usuario');
-            return usuarioStored ? JSON.parse(usuarioStored) : null;
-        } catch (error) {
-            console.error('error al cargar el usuario', error)
-            return null;
-        }
-
-    });
-
-    useEffect(() => {
-        try {
-            localStorage.setItem('usuario', JSON.stringify(usuario))
-        } catch (err) {
-            console.error('error al setear el usuario', err)
-        }
-    }, [usuario]);
+    const { object: usuario, setObject: setUsuario } = useLocalStorage<Usuario>('usuario');
 
     return (
         <UserContext.Provider value={{ usuario, setUsuario }}>

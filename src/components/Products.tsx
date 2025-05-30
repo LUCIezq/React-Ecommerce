@@ -4,9 +4,10 @@ import type { ProductsProps } from "@/types/ProductsProps";
 import { useFetch } from "@/hooks/use-fetch";
 import type { ApiData } from "@/types/ApiData";
 
+const URL = "https://fakestoreapi.com/products";
+
 export default function Products({ size, filter }: ProductsProps) {
 
-    const URL = "https://fakestoreapi.com/products";
     const { data, loading, error } = useFetch<ApiData[]>(URL);
 
 

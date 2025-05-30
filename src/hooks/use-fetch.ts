@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 type DataType<T> = T | null;
+
 type ErrorType = Error | null;
 
 //Los genericos me permiten trabajar con cualquier tipo de dato
