@@ -1,13 +1,7 @@
+import type { User } from "@/types/User";
 import { createContext, type SetStateAction } from "react";
 
-type typeUser = Usuario | null;
-
-interface Usuario {
-    email: string;
-    nombre: string;
-    password: string;
-    apellido: string;
-}
+type typeUser = User | null;
 
 interface Props {
     usuario: typeUser;

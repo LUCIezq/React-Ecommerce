@@ -1,15 +1,9 @@
+import type { User } from "@/types/User";
 import { createContext, type SetStateAction } from "react";
 
-interface Usuario {
-    email: string;
-    nombre: string;
-    password: string;
-    apellido: string;
-}
-
 interface Props {
-    usuarios: Usuario[];
-    setUsuarios: React.Dispatch<SetStateAction<Usuario[]>>;
+    usuarios: User[];
+    setUsuarios: React.Dispatch<SetStateAction<User[]>>;
 }
 
 const init: Props = {
