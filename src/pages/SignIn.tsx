@@ -8,6 +8,8 @@ import type { FormData, FormDataSignUp } from "@/types/FormData";
 import { Form } from "@/components/Form";
 import { DataLogin } from "@/data/FormData";
 import { UsuariosContext } from "@/contexts/users/UsuariosContext";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import type { ApiData } from "@/types/ApiData";
 
 export default function SignIn() {
 
@@ -17,9 +19,8 @@ export default function SignIn() {
     });
     const { setUsuario } = useContext(UserContext);
     const navigate = useNavigate();
-
-
     const { usuarios } = useContext(UsuariosContext);
+    const { object: carrito } = useLocalStorage<ApiData[]>('carrito');
 
     const handleLoguear: SubmitHandler<FormData> = ((data) => {
 
@@ -27,6 +28,9 @@ export default function SignIn() {
 
         if (userExist) {
             if (userExist.password === data.password) {
+                if (carrito) {
+                    userExist.cart = carrito;
+                }
                 setUsuario(userExist);
                 navigate(`/`);
             } else {

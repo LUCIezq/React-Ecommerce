@@ -13,6 +13,7 @@ export const Form = ({ onSubmit, data, methods }: FormProps) => {
     const setToggleIcon = (): void => {
         setToggle(!toggle);
     };
+
     const confirmPassword = methods.watch('confirmPassword');
     const password = methods.watch('password');
 
