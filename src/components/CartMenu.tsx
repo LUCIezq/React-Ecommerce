@@ -10,7 +10,6 @@ import { Plus } from 'lucide-react';
 import { Minus } from 'lucide-react';
 import CartEmpty from "./CartEmpty";
 import AlertDialogComponent from "./AlertDialogComponent";
-import type { ApiData } from "@/types/ApiData";
 import { useContext, useState } from "react";
 import { CarritoContext } from "@/contexts/carrito/CarritoContext";
 import { UserContext } from "@/contexts/user/UserContext";
@@ -20,7 +19,7 @@ import { ShoppingBag } from 'lucide-react';
 
 export default function CartMenu() {
 
-    const { carrito, setCarrito, calcularTotal, calcularTotalCarrito } = useContext(CarritoContext);
+    const { carrito, calcularTotal, calcularTotalCarrito, incrementarCantidad, decrementarCantidad } = useContext(CarritoContext);
     const { usuario } = useContext(UserContext);
     const [open, setOpen] = useState(false);
 
@@ -34,22 +33,6 @@ export default function CartMenu() {
         } else {
             Navigate('/checkout');
         }
-    }
-
-    const incrementarCantidad = (item: ApiData): void => {
-        setCarrito((prevCart) => {
-            return prevCart.map(element => element.id === item.id ?
-                { ...element, quantity: element.quantity + 1 } : element)
-        })
-    }
-
-    const decrementarCantidad = (item: ApiData): void => {
-        setCarrito((prevCart) => {
-            const newCart = prevCart.map(element => element.id === item.id ?
-                { ...element, quantity: element.quantity - 1 } : element)
-
-            return newCart.filter(element => element.quantity > 0);
-        })
     }
 
     return (
@@ -77,7 +60,7 @@ export default function CartMenu() {
                                                     <span>{item.category}</span>
                                                     <span className="text-white text-[15px] hover:underline">{item.title}</span>
                                                 </div>
-                                                <AlertDialogComponent setCart={setCarrito} item={item} />
+                                                <AlertDialogComponent item={item} />
                                             </div>
                                             <div className="flex justify-between items-center">
                                                 <span className="text-white font-medium text-[15px]">{item.quantity} x {item.price}</span>

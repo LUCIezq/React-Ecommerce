@@ -26,7 +26,7 @@ export default function SignUp() {
 
             setUsuarios((prevValue) => [...prevValue ?? [], CreateUser(data)]);
 
-            toast.success('Registro existoso')
+            toast.success('Usuario registrado correctamente')
             navigate('/sign-in');
         } else {
             methods.setError('email', {

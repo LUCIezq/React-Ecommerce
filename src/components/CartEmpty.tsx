@@ -4,10 +4,8 @@ interface CartEmptyProp {
 
 export default function CartEmpty({ text }: CartEmptyProp) {
     return (
-        <div className="flex justify-center items-center">
-            <span className="text-[15px]">
-                {text}
-            </span>
-        </div>
+        <h2 className="text-[15px] h-full text-white">
+            {text}
+        </h2>
     )
 }

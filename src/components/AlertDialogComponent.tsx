@@ -9,21 +9,14 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { toast } from 'sonner'
 import { Trash2 } from 'lucide-react';
 import type { Alert } from "@/types/Alert";
-import type { ApiData } from "@/types/ApiData";
 import { useContext } from "react";
 import { CarritoContext } from "@/contexts/carrito/CarritoContext";
 
 export default function AlertDialogComponent({ item }: Alert) {
 
-    const { setCarrito } = useContext(CarritoContext);
-
-    const deleteElement = (item: ApiData) => {
-        setCarrito(prevCart => prevCart.filter(element => !(element.id == item.id)))
-        toast.error('Producto eliminado')
-    }
+    const { deleteElement } = useContext(CarritoContext);
 
     return <>
         <AlertDialog>

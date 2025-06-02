@@ -1,9 +1,10 @@
 import Main from "@/components/Main";
+import Title from "@/components/Title";
 
 export default function Contacto() {
     return (
         <Main>
-            <h1 className="mt-11 text-white">Estoy en contacto</h1>
+            <Title text="Contacto" />
         </Main>
     )
 }

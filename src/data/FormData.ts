@@ -87,7 +87,7 @@ export const DataSignUp: DataLoginProps = {
         {
             id: 'password',
             name: 'password',
-            type: 'text',
+            type: 'password',
             placeholder: '********',
             label: 'Contraseña',
             Rules: {
@@ -101,7 +101,7 @@ export const DataSignUp: DataLoginProps = {
         {
             id: 'confirmPassword',
             name: 'confirmPassword',
-            type: 'text',
+            type: 'password',
             placeholder: '********',
             label: 'Confirmar contraseña',
             Rules: {
