@@ -20,7 +20,7 @@ export default function SignIn() {
     const { setUsuario } = useContext(UserContext);
     const navigate = useNavigate();
     const { usuarios } = useContext(UsuariosContext);
-    const { object: carrito } = useLocalStorage<ApiData[]>('carrito');
+    const { object: carrito } = useLocalStorage<ApiData[]>('carrito', []);
 
     const handleLoguear: SubmitHandler<FormData> = ((data) => {
 
