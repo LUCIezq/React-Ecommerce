@@ -1,24 +1,17 @@
-import { useEffect, useState, type JSX } from "react"
 import { CarritoContext } from "./CarritoContext"
 import type { ApiData } from "@/types/ApiData";
 import { toast } from "sonner";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import type { ReactNode } from "react";
 
 interface Props {
-    children: JSX.Element | JSX.Element[];
+    children: ReactNode;
 }
 
 export const CarritoProvider = ({ children }: Props) => {
 
+    const { object: carrito, setObject: setCarrito } = useLocalStorage<ApiData[]>('carrito', []);
 
-    const [carrito, setCarrito] = useState<ApiData[]>(() => {
-        try {
-            const storedCart = localStorage.getItem('carrito');
-            return storedCart ? JSON.parse(storedCart) : [];
-        } catch (error) {
-            console.error('error al cargar el carrito', error)
-            return [];
-        }
-    });
 
     const calcularTotal = (): number => {
         return carrito.reduce((sum, item) => { return sum + item.quantity }, 0);
@@ -48,14 +41,6 @@ export const CarritoProvider = ({ children }: Props) => {
     const calcularTotalCarrito = (): string => {
         return carrito.reduce((sum, item) => { return sum + item.quantity * item.price }, 0).toFixed(2);
     }
-
-    useEffect(() => {
-        try {
-            localStorage.setItem('carrito', JSON.stringify(carrito))
-        } catch (err) {
-            console.error('error al setear el carrito', err)
-        }
-    }, [carrito]);
 
     return (
         <CarritoContext.Provider value={{ carrito, setCarrito, calcularTotal, addToCart, calcularTotalCarrito }}>

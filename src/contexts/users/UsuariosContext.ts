@@ -8,7 +8,7 @@ interface Props {
 
 const init: Props = {
     usuarios: [],
-    setUsuarios: () => { }
+    setUsuarios: () => [{}]
 }
 
 export const UsuariosContext = createContext<Props>(init);

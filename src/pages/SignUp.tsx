@@ -24,7 +24,7 @@ export default function SignUp() {
 
         if (!userExist) {
 
-            setUsuarios((prevValue) => [...prevValue, CreateUser(data)]);
+            setUsuarios((prevValue) => [...prevValue ?? [], CreateUser(data)]);
 
             toast.success('Registro existoso')
             navigate('/sign-in');

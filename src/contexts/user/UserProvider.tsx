@@ -9,7 +9,7 @@ interface UserProviderProps {
 
 export const UserProvider = ({ children }: UserProviderProps) => {
 
-    const { object: usuario, setObject: setUsuario } = useLocalStorage<User>('usuario');
+    const { object: usuario, setObject: setUsuario } = useLocalStorage<User | null>('usuario', null);
 
     return (
         <UserContext.Provider value={{ usuario, setUsuario }}>

@@ -1,22 +1,22 @@
 import { useEffect, useState, type SetStateAction } from "react";
 
-type ObjectType<T> = T | null;
+type ObjectType<T> = T;
 
 interface Props<T> {
     object: ObjectType<T>;
     setObject: React.Dispatch<SetStateAction<ObjectType<T>>>
 }
 
-export function useLocalStorage<T>(name: string): Props<T> {
+export function useLocalStorage<T>(name: string, defaultValue: T): Props<T> {
 
     const [object, setObject] = useState<ObjectType<T>>(() => {
 
         try {
             const usuarioStored = localStorage.getItem(name);
-            return usuarioStored ? JSON.parse(usuarioStored) : null;
+            return usuarioStored ? JSON.parse(usuarioStored) : defaultValue;
         } catch (error) {
             console.error('error al cargar el usuario', error)
-            return null;
+            return defaultValue;
         }
 
     });

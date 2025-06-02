@@ -16,8 +16,7 @@ import { toast } from "sonner";
 
 
 export default function DropDownUser() {
-    const { usuario } = useContext(UserContext);
-    const { setUsuario } = useContext(UserContext);
+    const { usuario, setUsuario } = useContext(UserContext);
     const navigate = useNavigate();
 
     const cerrarSesion = () => {
