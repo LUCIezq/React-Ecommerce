@@ -12,8 +12,8 @@ export function useLocalStorage<T>(name: string, defaultValue: T): Props<T> {
     const [object, setObject] = useState<ObjectType<T>>(() => {
 
         try {
-            const usuarioStored = localStorage.getItem(name);
-            return usuarioStored ? JSON.parse(usuarioStored) : defaultValue;
+            const stored = localStorage.getItem(name);
+            return stored ? JSON.parse(stored) : defaultValue;
         } catch (error) {
             console.error('error al cargar el usuario', error)
             return defaultValue;
