@@ -11,7 +11,7 @@ export const DataLogin: DataLoginProps = {
             name: 'email',
             placeholder: 'alguien@algo.com',
             label: 'Email',
-            Rules: {
+            rules: {
                 required: true,
                 pattern: {
                     value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -25,7 +25,7 @@ export const DataLogin: DataLoginProps = {
             type: 'password',
             placeholder: '********',
             label: 'Contraseña',
-            Rules: {
+            rules: {
                 required: true,
                 minLength: {
                     value: 8,
@@ -46,7 +46,7 @@ export const DataSignUp: DataLoginProps = {
             name: 'name',
             placeholder: '@alguien',
             label: 'Nombre',
-            Rules: {
+            rules: {
                 required: true,
                 minLength: {
                     value: 4,
@@ -60,7 +60,7 @@ export const DataSignUp: DataLoginProps = {
             name: 'surname',
             placeholder: '@algo',
             label: 'Apellido',
-            Rules: {
+            rules: {
                 required: true,
                 minLength: {
                     value: 3,
@@ -76,7 +76,7 @@ export const DataSignUp: DataLoginProps = {
             name: 'email',
             placeholder: 'alguien@algo.com',
             label: 'Email',
-            Rules: {
+            rules: {
                 required: true,
                 pattern: {
                     value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -90,7 +90,7 @@ export const DataSignUp: DataLoginProps = {
             type: 'password',
             placeholder: '********',
             label: 'Contraseña',
-            Rules: {
+            rules: {
                 required: true,
                 minLength: {
                     value: 8,
@@ -104,7 +104,7 @@ export const DataSignUp: DataLoginProps = {
             type: 'password',
             placeholder: '********',
             label: 'Confirmar contraseña',
-            Rules: {
+            rules: {
                 required: true,
             }
         }
