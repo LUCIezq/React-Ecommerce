@@ -20,21 +20,26 @@ export const CarritoProvider = ({ children }: Props) => {
     const addToCart = (item: ApiData): void => {
 
         setCarrito(prevCart => {
-            const exist = carrito.find(element => element.id === item.id);
+            const exist = prevCart.find(element => element.id === item.id);
 
-            if (exist) {
+            if (!exist) {
+                toast.success(`Producto agregado con exito!`, {
+                    description: `${item.title}`
+                });
+                return [...prevCart, { ...item, quantity: 1 }]
+            }
+
+            if (exist.quantity < 10) {
+                toast.success(`Producto agregado con exito!`, {
+                    description: `${item.title}`
+                });
                 return prevCart.map(element => element.id === item.id ?
                     { ...element, quantity: element.quantity + 1 } : element)
             } else {
-                return [...prevCart, { ...item, quantity: 1 }]
+                toast.warning(`El tope es de 10 unidades por producto`);
+                return prevCart;
             }
         })
-
-        toast.success(`Producto agregado con exito!`, {
-            description: `${item.title}`
-        });
-
-        localStorage.setItem("carrito", JSON.stringify(carrito))
     }
 
     const calcularTotalCarrito = (): string => {
@@ -46,10 +51,14 @@ export const CarritoProvider = ({ children }: Props) => {
     }
 
     const incrementarCantidad = (item: ApiData): void => {
-        setCarrito((prevCart) => {
-            return prevCart.map(element => element.id === item.id ?
-                { ...element, quantity: element.quantity + 1 } : element)
-        })
+        if (item.quantity < 10) {
+            setCarrito((prevCart) => {
+                return prevCart.map(element => element.id === item.id ?
+                    { ...element, quantity: element.quantity + 1 } : element)
+            })
+        } else {
+            toast.warning('El tope es de 10 unidades por producto')
+        }
     }
 
     const decrementarCantidad = (item: ApiData): void => {

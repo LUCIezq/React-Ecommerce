@@ -48,7 +48,7 @@ export const Form = ({ onSubmit, data, methods }: FormProps) => {
                                 : {};
                         return <div key={item.id} className="flex flex-col gap-3 w-full relative">
                             <Label {...item} />
-                            <Input {...item} rules={{ ...item.Rules, ...extraRules }} />
+                            <Input {...item} rules={{ ...item.rules, ...extraRules }} />
 
                             {
                                 item.type === "password" && (

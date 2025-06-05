@@ -14,7 +14,7 @@ import SignUp from "./pages/SignUp"
 export default function App() {
   return (
     <>
-      <Toaster richColors theme="dark" position="top-center" />
+      <Toaster richColors theme="dark" position="top-center" gap={5} offset={30} />
       <Header />
 
       <Routes>

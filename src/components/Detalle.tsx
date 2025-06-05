@@ -15,11 +15,11 @@ export const Detalle = ({ carrito, calcularTotal, calcularTotalCarrito, currentS
 
     return (
         <div className="bg-black flex flex-col gap-3 p-4 ">
-            <span className="text-2xl font-medium">{calcularTotal()} productos</span>
+            <span className="text-2xl font-medium text-end">{calcularTotal()} productos</span>
             <div className="flex flex-col gap-3 p-2 h-full max-h-[300px] overflow-y-scroll">
                 {carrito.map((Product) => {
                     return <div className="flex border-t-1 border-b-1 border-neutral-900 items-center justify-between p-1 py-2" key={Product.id}>
-                        <h3 className="w-full max-w-[450px]">{Product.quantity} x {Product.title}</h3>
+                        <h3 className="w-full text-[15px] max-w-[450px]">{Product.quantity} x {Product.title}</h3>
                         <span className="flex">$ {Product.price}</span>
                     </div>
                 })}

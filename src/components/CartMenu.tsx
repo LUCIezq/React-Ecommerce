@@ -85,7 +85,7 @@ export default function CartMenu() {
                                 </div>
 
                                 <button onClick={payProducts} type="button" className="bg-[white] text-black font-medium text-[18px] w-full text-center m-auto p-1.5 rounded-[7px] cursor-pointer 
-                                border-1 transition-all hover:bg-transparent hover:text-white">
+                                border-1 transition-all hover:bg-transparent hover:text-white ">
                                     Pagar
                                 </button>
                             </div>}
