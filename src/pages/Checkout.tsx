@@ -11,6 +11,8 @@ import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { DataDirection } from "@/data/FormDataDirection";
 import { Input } from "@/components/Input";
 import { Label } from "@/components/Label";
+import { PackageCheck } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Checkout() {
     const { carrito, vaciarCarrito, calcularTotalCarrito, calcularTotal, deleteElement } = useContext(CarritoContext);
@@ -86,6 +88,21 @@ export default function Checkout() {
                                             </button>
                                         </form>
                                     </div>}
+
+                                    {
+                                        currentStep === 3 &&
+                                        <div className="text-[white] flex flex-col gap-4 justify-center items-center">
+                                            <PackageCheck size={80} strokeWidth={1} />
+                                            <div className="text-center w-full max-w-[500px] flex flex-col gap-2">
+                                                <h2 className="text-3xl font-semibold">Orden realizada con exito</h2>
+                                                <p className="text-gray-400">Tu orden ya se encuentra en proceso de preparacion.Te enviaremos un mail cuando despachemos el producto.</p>
+                                            </div>
+                                            <Link to='/' onClick={vaciarCarrito} className="text-black text-[17px] mt-5 bg-white px-3 py-2.5 rounded-[7px] hover:bg-neutral-400 transition-all">
+                                                Ir al Home
+                                            </Link>
+
+                                        </div>
+                                    }
 
                                 </div>
 
