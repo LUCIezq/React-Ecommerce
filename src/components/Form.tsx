@@ -46,7 +46,7 @@ export const Form = ({ onSubmit, data, methods }: FormProps) => {
                                         value === methods.watch("password") || "Las contraseñas no coinciden",
                                 }
                                 : {};
-                        return <div key={item.id} className="flex flex-col gap-3 w-full relative">
+                        return <div key={item.id} className="flex flex-col gap-2 w-full relative">
                             <Label {...item} />
                             <Input {...item} rules={{ ...item.rules, ...extraRules }} />
 

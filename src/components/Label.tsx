@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import type { LabelProps } from "@/types/LabelProps";
 
-export const Label = ({ name, label }: LabelProps) => {
+export const Label = ({ name, label, rules }: LabelProps) => {
 
     //-> Obtengo el objeto formState y dentro de ese objeto el objeto errors.
     const { formState: { errors } } = useFormContext(); // -> useFormContext -> Me permite obtener el contexto del carrito desde cualquier componente.
@@ -9,7 +9,8 @@ export const Label = ({ name, label }: LabelProps) => {
     return (
         <label
             htmlFor={name}
-            className={`font-medium ${errors[name] ? 'text-red-900' : 'text-[#ffffffd4]'}`}>{label} *
+            className={`font-medium ${errors[name] ? 'text-red-900' : 'text-[#ffffffd4]'}`}>
+            {label}{rules?.required ? ' *' : ''}
         </label>
     )
 }

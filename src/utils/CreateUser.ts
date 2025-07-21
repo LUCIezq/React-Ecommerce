@@ -8,7 +8,8 @@ export const CreateUser = (data: FormDataSignUp): User => {
         apellido: data.surname.toLowerCase(),
         email: data.email,
         password: data.password,
-        cart: []
+        cart: [],
+        esAdmin: data.toggleAdmin ? true : false
     }
 
     return user;

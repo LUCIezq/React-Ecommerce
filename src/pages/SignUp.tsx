@@ -22,6 +22,8 @@ export default function SignUp() {
     const handleRegistrar: SubmitHandler<FormDataSignUp> = (data) => {
         const userExist = usuarios?.some((usuario => usuario.email === data.email));
 
+        console.log(data);
+
         if (!userExist) {
 
             setUsuarios((prevValue) => [...prevValue ?? [], CreateUser(data)]);
