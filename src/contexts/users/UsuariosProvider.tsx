@@ -8,8 +8,15 @@ interface UsuariosProviderProps {
 }
 
 export const UsuariosProvider = ({ children }: UsuariosProviderProps) => {
-
-    const { object: usuarios, setObject: setUsuarios } = useLocalStorage<User[]>("usuarios", []);
+    const admin = {
+        nombre: "admin",
+        apellido: "",
+        email: "admin@admin.com",
+        password: "adminadmin",
+        cart: [],
+        rol: "ADMIN"
+    }
+    const { object: usuarios, setObject: setUsuarios } = useLocalStorage<User[]>("usuarios", [admin]);
 
     return (
         <UsuariosContext.Provider value={{ usuarios: usuarios ?? [], setUsuarios }}>

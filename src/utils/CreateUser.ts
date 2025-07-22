@@ -9,7 +9,7 @@ export const CreateUser = (data: FormDataSignUp): User => {
         email: data.email,
         password: data.password,
         cart: [],
-        esAdmin: data.toggleAdmin
+        rol: 'USUARIO'
     }
 
     return user;

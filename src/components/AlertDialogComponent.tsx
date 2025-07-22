@@ -12,14 +12,14 @@ import {
 import { Trash } from 'lucide-react';
 import type { Alert } from "@/types/Alert";
 
-export default function AlertDialogComponent({ item, handleFunction }: Alert) {
+export default function AlertDialogComponent({ item, handleFunction, text }: Alert) {
 
     return <>
         <AlertDialog>
             <AlertDialogTrigger  >
-                <div className="flex items-center gap-3 cursor-pointer">
-                    <Trash strokeWidth={2} size={18} className="cursor-pointer hover:text-white transition-all" />
-                    <h2 className="text-red-600 font-medium">Eliminar</h2>
+                <div className="flex items-center  gap-3 cursor-pointer">
+                    <Trash strokeWidth={2} size={18} className="cursor-pointer hover:text-white transition-all " />
+                    <h2 className="text-red-600 font-medium">{text}</h2>
                 </div>
             </AlertDialogTrigger>
             <AlertDialogContent className="bg-[#09090b] w-[min(450px,100%)] justify-center items-center flex flex-col gap-5 border-[#ffffff26]">

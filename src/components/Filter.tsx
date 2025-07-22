@@ -13,10 +13,17 @@ export default function Filter({ setFilter }: Filter) {
 
             <RadioGroup onValueChange={(event) => setFilter(event)} defaultValue="All" className="text-white">
                 <RadioItem value="All" name="Todos" />
-                <RadioItem value="men's clothing" name="Ropa masculina" />
-                <RadioItem value="jewelery" name="Joyas" />
-                <RadioItem value="electronics" name="Electronica" />
-                <RadioItem value="women's clothing" name="Ropa femenina" />
+                <RadioItem value="calzado" name="Calzado" />
+                <RadioItem value="tecnología" name="Tecnología" />
+                <RadioItem value="ropa" name="Ropa" />
+                <RadioItem value="electrodomésticos" name="Electrodomésticos" />
+                <RadioItem value="muebles" name="Muebles" />
+                <RadioItem value="accesorios" name="Accesorios" />
+                <RadioItem value="hogar" name="Hogar" />
+                <RadioItem value="cocina" name="Cocina" />
+                <RadioItem value="perfumería" name="Perfumería" />
+                <RadioItem value="belleza" name="Belleza" />
+                <RadioItem value="libros" name="Libros" />
             </RadioGroup>
         </div>
     )

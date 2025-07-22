@@ -3,7 +3,7 @@ import type { ApiData } from "@/types/ApiData";
 import { ProductosContext } from "./ProductosContext";
 
 export const ProductosProvider = ({ children }: { children: React.ReactNode }) => {
-    const { data, setData, loading, error } = useFetch<ApiData[]>("https://fakestoreapi.com/products");
+    const { data, setData, loading, error } = useFetch<ApiData[]>("https://687bafbbb4bc7cfbda86d0cb.mockapi.io/Productos");
 
     return (
         <ProductosContext.Provider

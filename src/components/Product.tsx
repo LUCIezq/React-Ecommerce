@@ -44,18 +44,24 @@ export default function Product({ item }: ProductProps) {
                         <span className="text-gray-700 font-medium">{item.category}</span>
                         <h2 className="text-gray-300 font-semibold text-[16px] hover:underline w-fit">{item.title}</h2>
                     </div>
-                    {usuario != null && usuario.esAdmin ?
+                    {usuario != null && usuario.rol === "ADMIN" &&
                         <div className="bg-[#2e2d2d4d] flex p-1
                         rounded-[5px] hover:bg-[#3a38387d] transition-all duration-300">
                             <PopoverAdmin item={item} />
                         </div>
-                        :
-                        <Heart fill={existElement() ? "white" : ""} className="absolute top-4 right-4 cursor-pointer" color="white " onClick={agregarFavorito} />
+
                     }
+                    {usuario != null && usuario.rol === "USUARIO" &&
+                        <Heart fill={existElement() ? "white" : ""} className="absolute top-4 right-4 cursor-pointer" color="white " onClick={agregarFavorito} />}
+
+                    {usuario == null &&
+                        <></>}
                 </div>
 
                 <div className="flex items-center justify-between">
                     <span className="text-white font-medium">$ {item.price}</span>
+
+
                     <button className="border-1 border-white self-start px-3 py-1 text-white
                     rounded-2xl cursor-pointer hover:bg-white hover:text-black transition-all " onClick={() => addToCart(item)}>Comprar</button>
                 </div>
