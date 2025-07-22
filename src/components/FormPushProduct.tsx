@@ -16,8 +16,7 @@ export default function FormPushProducts({ setOpen }: { setOpen: (open: boolean)
         register,
         handleSubmit,
         setValue,
-        formState: { errors },
-    } = useForm<FormInput>(); const { setData } = useContext(ProductosContext);
+    } = useForm<IFormInput>(); const { setData } = useContext(ProductosContext);
 
     const onSubmit: SubmitHandler<IFormInput> = async (data) => {
         console.log(data);

@@ -5,11 +5,12 @@ import {
 } from "@/components/ui/popover"
 // import { ProductosContext } from "@/contexts/productos/ProductosContext";
 import type { ApiData } from "@/types/ApiData";
-import { Edit, EllipsisVerticalIcon } from "lucide-react"
+import { EllipsisVerticalIcon } from "lucide-react"
 import AlertDialogComponent from "./AlertDialogComponent";
 import { ProductosContext } from "@/contexts/productos/ProductosContext";
 import { useContext } from "react";
 import { toast } from "sonner";
+import UpdateProducts from "./UpdateProducts";
 // import { useContext } from "react";
 
 
@@ -37,8 +38,7 @@ export default function PopoverAdmin({ item }: PopoverAdminProps) {
             <PopoverContent className="w-full min-w-[150px]">
                 <div className="flex flex-col gap-3 text-white">
                     <div className="flex items-center gap-3 cursor-pointer px-2 py-1 hover:bg-[#3a38387d] transition-all duration-300 rounded-[5px]">
-                        <Edit size={17} />
-                        <h2 className="font-medium">Editar</h2>
+                        <UpdateProducts item={item} />
                     </div>
                     <div className="flex items-center gap-3 cursor-pointer px-2 py-1 hover:bg-[#3a38387d] transition-all duration-300 rounded-[5px]">
                         <AlertDialogComponent item={item} text="Eliminar" handleFunction={eliminarProducto} />
