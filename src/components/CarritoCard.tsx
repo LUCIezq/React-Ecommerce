@@ -18,7 +18,7 @@ export const CarritoCard = ({ product }: Props) => {
                         </h2>
                         <span className="text-gray-500">{product.category}</span>
                     </div>
-                    <AlertDialogComponent item={product} />
+                    <AlertDialogComponent handleFunction={() => (console.log)} item={product} />
                 </div>
 
                 <div className="flex justify-between text-[15px] font-medium">
