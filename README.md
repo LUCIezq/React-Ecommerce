@@ -1,54 +1,60 @@
-# React + TypeScript + Vite
+# 🛒 Panel de Administración de Productos - React + MockAPI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es un panel de administración para productos, desarrollado con **React**, utilizando **MockAPI** como backend simulado. Permite a un administrador realizar operaciones **CRUD** (Crear, Leer, Actualizar, Eliminar) sobre los productos. 
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ⚙️ Tecnologías utilizadas
 
-## Expanding the ESLint configuration
+- ⚛️ React + Vite
+- 🎨 TailwindCSS + ShadCN UI
+- 📦 Context API
+- 🧰 React Hook Form
+- 📡 Fetch API
+- 🧪 TypeScript
+- 🧪 MockAPI para datos falsos
+- 💡 `lucide-react` para íconos
+- 🍞 `sonner` para notificaciones
+- 🧠 Diseño modular y componentes reutilizables
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🔐 Usuario administrador
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+> Para acceder a las funciones de administración, usá el siguiente usuario:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Email:** `admin@admin.com`  
+- **Contraseña:** `adminadmin`
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Este usuario tiene permisos para:
+- Agregar nuevos productos
+- Editar productos existentes
+- Eliminar productos
+- Ver todos los productos del sistema
+
+---
+
+## ✨ Funcionalidades
+
+### ✅ Listado de productos
+- Se obtienen desde **MockAPI**.
+- Se muestran con carga (`loading`) y manejo de errores (`error`).
+- Están filtrados por categoría si se elige.
+
+### ➕ Crear producto
+- Formulario validado con `react-hook-form`.
+- Al enviar, se realiza una petición **POST**.
+- El nuevo producto se agrega automáticamente al estado global.
+
+### ✏️ Editar producto
+- Cada producto tiene un botón "Editar".
+- Al hacer clic, se abre un modal precargado con los datos.
+- El modal permite actualizar los campos.
+- Al guardar, se realiza un **PUT** y se actualiza el estado.
+
+### 🗑️ Eliminar producto
+- Cada producto puede eliminarse con un modal de confirmación (`AlertDialog`).
+- Se realiza un **DELETE** a la API y se actualiza el contexto global.
+
+---
+
