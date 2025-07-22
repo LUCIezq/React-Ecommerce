@@ -108,15 +108,5 @@ export const DataSignUp: DataLoginProps = {
                 required: true,
             }
         },
-        {
-            id: 'toggleAdmin',
-            type: 'checkbox',
-            name: 'toggleAdmin',
-            label: '¿Queres ser administrador?',
-            rules: {
-                required: false
-            },
-            placeholder: ''
-        }
     ]
 }

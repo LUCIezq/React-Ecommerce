@@ -13,6 +13,7 @@ export default function Product({ item }: ProductProps) {
     const { addToCart } = useContext(CarritoContext);
     const { usuario } = useContext(UserContext);
 
+
     const existElement = () => {
         return favoritos.find((e) => e.id === item.id);
     }
@@ -46,7 +47,7 @@ export default function Product({ item }: ProductProps) {
                     {usuario != null && usuario.esAdmin ?
                         <div className="bg-[#2e2d2d4d] flex p-1
                         rounded-[5px] hover:bg-[#3a38387d] transition-all duration-300">
-                            <PopoverAdmin />
+                            <PopoverAdmin item={item} />
                         </div>
                         :
                         <Heart fill={existElement() ? "white" : ""} className="absolute top-4 right-4 cursor-pointer" color="white " onClick={agregarFavorito} />

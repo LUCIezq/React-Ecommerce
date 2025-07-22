@@ -9,6 +9,7 @@ interface Props<T> {
     data: DataType<T>;
     loading: boolean;
     error: ErrorType;
+    setData: React.Dispatch<React.SetStateAction<DataType<T>>>;
 }
 
 export function useFetch<T>(url: string): Props<T> {
@@ -40,5 +41,5 @@ export function useFetch<T>(url: string): Props<T> {
         fetchData();
     }, [url])
 
-    return { data, loading, error };
+    return { data, loading, error, setData };
 }

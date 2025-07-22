@@ -3,23 +3,42 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
-import { Edit, EllipsisVerticalIcon, Trash } from "lucide-react"
+import { ProductosContext } from "@/contexts/productos/ProductosContext";
+// import { ProductosContext } from "@/contexts/productos/ProductosContext";
+import type { ApiData } from "@/types/ApiData";
+import { Edit, EllipsisVerticalIcon } from "lucide-react"
+import { useContext } from "react";
+import AlertDialogComponent from "./AlertDialogComponent";
+// import { useContext } from "react";
 
-export default function PopoverAdmin() {
+
+interface PopoverAdminProps {
+    item: ApiData;
+}
+
+export default function PopoverAdmin({ item }: PopoverAdminProps) {
+
+    const { setData } = useContext(ProductosContext);
+
+    const eliminarProducto = () => {
+        setData(
+            prevValue => prevValue.filter(e => e.id != item.id)
+        )
+    }
+
     return (
-        <Popover >
+        <Popover>
             <PopoverTrigger>
                 <EllipsisVerticalIcon color="white" size={20} className="cursor-pointer" />
             </PopoverTrigger>
             <PopoverContent className="w-full min-w-[150px]">
-                <div className="flex flex-col gap-2 text-white">
-                    <div className="flex items-center gap-2 cursor-pointer">
+                <div className="flex flex-col gap-3 text-white">
+                    <div className="flex items-center gap-3 cursor-pointer px-2 py-1 hover:bg-[#3a38387d] transition-all duration-300 rounded-[5px]">
                         <Edit size={17} />
                         <h2 className="font-medium">Editar</h2>
                     </div>
-                    <div className="flex items-center gap-2 cursor-pointer">
-                        <Trash size={17} />
-                        <h2 className="text-red-600 font-medium">Eliminar</h2>
+                    <div className="flex items-center gap-3 cursor-pointer px-2 py-1 hover:bg-[#3a38387d] transition-all duration-300 rounded-[5px]">
+                        <AlertDialogComponent item={item} handleFunction={eliminarProducto} />
                     </div>
                 </div>
             </PopoverContent>

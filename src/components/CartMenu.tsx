@@ -19,9 +19,10 @@ import { ShoppingBag } from 'lucide-react';
 
 export default function CartMenu() {
 
-    const { carrito, calcularTotal, calcularTotalCarrito, incrementarCantidad, decrementarCantidad } = useContext(CarritoContext);
+    const { carrito, calcularTotal, calcularTotalCarrito, incrementarCantidad, decrementarCantidad, deleteElement } = useContext(CarritoContext);
     const { usuario } = useContext(UserContext);
     const [open, setOpen] = useState(false);
+
 
     const Navigate = useNavigate();
 
@@ -60,7 +61,7 @@ export default function CartMenu() {
                                                     <span>{item.category}</span>
                                                     <span className="text-white text-[15px] hover:underline">{item.title}</span>
                                                 </div>
-                                                <AlertDialogComponent item={item} />
+                                                <AlertDialogComponent item={item} handleFunction={deleteElement} />
                                             </div>
                                             <div className="flex justify-between items-center">
                                                 <span className="text-white font-medium text-[15px]">{item.quantity} x {item.price}</span>

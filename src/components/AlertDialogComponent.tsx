@@ -11,17 +11,16 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Trash } from 'lucide-react';
 import type { Alert } from "@/types/Alert";
-import { useContext } from "react";
-import { CarritoContext } from "@/contexts/carrito/CarritoContext";
 
-export default function AlertDialogComponent({ item }: Alert) {
-
-    const { deleteElement } = useContext(CarritoContext);
+export default function AlertDialogComponent({ item, handleFunction }: Alert) {
 
     return <>
         <AlertDialog>
             <AlertDialogTrigger  >
-                <Trash strokeWidth={2} size={18} className="cursor-pointer hover:text-white transition-all" />
+                <div className="flex items-center gap-3 cursor-pointer">
+                    <Trash strokeWidth={2} size={18} className="cursor-pointer hover:text-white transition-all" />
+                    <h2 className="text-red-600 font-medium">Eliminar</h2>
+                </div>
             </AlertDialogTrigger>
             <AlertDialogContent className="bg-[#09090b] w-[min(450px,100%)] justify-center items-center flex flex-col gap-5 border-[#ffffff26]">
                 <AlertDialogHeader>
@@ -32,7 +31,7 @@ export default function AlertDialogComponent({ item }: Alert) {
                 </AlertDialogHeader>
                 <AlertDialogFooter className="m-auto">
                     <AlertDialogCancel className="cursor-pointer">Cancelar</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => deleteElement(item)} className="hover:bg-red-800 cursor-pointer">Continuar</AlertDialogAction>
+                    <AlertDialogAction onClick={() => handleFunction(item)} className="bg-red-800 hover:bg-red-500 text-white  cursor-pointer">Continuar</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog >

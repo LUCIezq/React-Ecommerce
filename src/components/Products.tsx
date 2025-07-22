@@ -1,15 +1,12 @@
+import { ProductosContext } from "@/contexts/productos/ProductosContext";
 import Product from "./Product";
 import { SkeletonCard } from "./SkeletonCard";
 import type { ProductsProps } from "@/types/ProductsProps";
-import { useFetch } from "@/hooks/use-fetch";
-import type { ApiData } from "@/types/ApiData";
-
-const URL = "https://fakestoreapi.com/products";
+import { useContext } from "react";
 
 export default function Products({ size, filter }: ProductsProps) {
 
-    const { data, loading, error } = useFetch<ApiData[]>(URL);
-
+    const { data, loading, error } = useContext(ProductosContext);
 
     if (error) {
         return (<div className="flex items-center  h-full justify-center  w-full">

@@ -8,22 +8,25 @@ import { CarritoProvider } from './contexts/carrito/CarritoProvider.tsx'
 import { UserProvider } from './contexts/user/UserProvider.tsx'
 import { UsuariosProvider } from './contexts/users/UsuariosProvider.tsx'
 import { ThemeProvider } from 'next-themes'
+import { ProductosProvider } from './contexts/productos/ProductosProvider.tsx'
 
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <Router>
-        <UserProvider>
-          <CarritoProvider>
-            <FavoritosProvider>
-              <UsuariosProvider>
-                <App />
-              </UsuariosProvider>
-            </FavoritosProvider>
-          </CarritoProvider>
-        </UserProvider>
-      </Router>
-    </ThemeProvider>
+    <ProductosProvider>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <Router>
+          <UserProvider>
+            <CarritoProvider>
+              <FavoritosProvider>
+                <UsuariosProvider>
+                  <App />
+                </UsuariosProvider>
+              </FavoritosProvider>
+            </CarritoProvider>
+          </UserProvider>
+        </Router>
+      </ThemeProvider>
+    </ProductosProvider>
   </StrictMode>
 )
