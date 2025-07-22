@@ -63,7 +63,7 @@ export default function Product({ item }: ProductProps) {
 
 
                     {
-                        usuario && usuario.rol === "USUARIO" &&
+                        (usuario == null || usuario.rol === "USUARIO") &&
                         <button className="border-1 border-white self-start px-3 py-1 text-white
                     rounded-2xl cursor-pointer hover:bg-white hover:text-black transition-all " onClick={() => addToCart(item)}>Comprar</button>
                     }
