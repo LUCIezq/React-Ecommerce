@@ -8,10 +8,10 @@ interface Filter {
 export default function Filter({ setFilter }: Filter) {
 
     return (
-        <div className="grid gap-5 border-l-1 pl-7 border-[#ffffff36]">
-            <h2 className="text-white text-[20px] font-medium">Selecciona la categoria</h2>
+        <div className="grid gap-5 border-l-1 pl-7 border-[#0000001c] dark:border-[#ffffff36]">
+            <h2 className="text-[#000000d2] dark:text-white text-[20px] font-medium">Selecciona la categoria</h2>
 
-            <RadioGroup onValueChange={(event) => setFilter(event)} defaultValue="All" className="text-white">
+            <RadioGroup onValueChange={(event) => setFilter(event)} defaultValue="All" className="text-black dark:text-white">
                 <RadioItem value="All" name="Todos" />
                 <RadioItem value="calzado" name="Calzado" />
                 <RadioItem value="tecnología" name="Tecnología" />

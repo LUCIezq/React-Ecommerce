@@ -40,8 +40,8 @@ export default function CartMenu() {
 
         <Sheet open={open} onOpenChange={(value) => setOpen(value)}>
             <SheetTrigger className="flex items-center gap-1">
-                <ShoppingBag strokeWidth={1} size={20} className="cursor-pointer" />
-                <span className=" cursor-pointer font-medium text-center text-[#ffffff]">
+                <ShoppingBag strokeWidth={1} size={20} color="black" className="cursor-pointer" />
+                <span className=" cursor-pointer font-medium text-center text-[black] dark:text-white">
                     {calcularTotal()}
                 </span>
             </SheetTrigger>

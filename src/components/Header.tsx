@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "@/contexts/user/UserContext";
 import PopoverFavorites from "./PopoverFavorites";
 import DropDownUser from "./DropDownUser";
+import ToggleDarkMode from "./ToggleDarkMode";
 
 export default function Header() {
 
@@ -19,7 +20,7 @@ export default function Header() {
     }
 
     return (
-        <header className="bg-[black] fixed left-0 right-0  p-5 flex justify-between items-center z-40">
+        <header className="bg-[white] dark:bg-black  fixed left-0 right-0  p-5 flex justify-between items-center z-40 ">
 
             <div className="cursor-pointer z-50 md:hidden" onClick={showMenu}>
                 {hidden ?
@@ -36,16 +37,18 @@ export default function Header() {
 
                 {
                     usuario == null ?
-                        <Link className=" font-medium text-[14px] transition-all border-1 border-white px-2 py-1.5 rounded-2xl hover:bg-white hover:text-black" to="/sign-in" >Iniciar sesion</Link> : <DropDownUser />
+                        <Link className=" font-medium text-[14px] transition-all border-1 border-black text-black dark:text-white dark:border-white px-2 py-1.5 rounded-2xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black " to="/sign-in" >Iniciar sesion</Link> : <DropDownUser />
                 }
 
-
                 {(usuario == null || usuario.rol === "USUARIO") && (
-                    <div className="flex">
+                    <div className="flex gap-3">
                         <CartMenu />
                         {usuario && <PopoverFavorites />}
+
+                        <ToggleDarkMode />
                     </div>
                 )}
+
 
             </div>
 

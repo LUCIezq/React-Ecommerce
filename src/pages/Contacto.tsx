@@ -6,10 +6,11 @@ export default function Contacto() {
     return (
         <Main>
             <Title text="Contacto" />
-            <div className="flex flex-col items-center justify-center gap-10 p-10 ">
-                <div className="text-white bg-black  w-full max-w-[1200px] flex gap-40 p-8 justify-center rounded-3xl shadow-2xl shadow-[#ffffff12]">
+            <div className="flex flex-col items-center justify-center gap-10 p-10">
+                <div className="text-black dark:text-white bg-white dark:bg-black w-full 
+                max-w-[1200px] flex gap-40 p-8 justify-center rounded-3xl shadow-2xl shadow-[#ffffff12] border-[#0000000a] border-1 dark:border-[#ffffff52]">
                     <div className="flex flex-col justify-center items-start gap-4">
-                        <span className="border-1 border-[#ffffff63] p-2 rounded-md text-[12px]">
+                        <span className="border-1 border-[#00000031] dark:border-[#ffffff52] p-2 rounded-md text-[12px]">
                             ¿Como podes contactarnos?
                         </span>
 
@@ -31,7 +32,7 @@ export default function Contacto() {
                                     <p className="text-[20px] font-bold">
                                         Chat en vivo
                                     </p>
-                                    <span className="text-[14px] text-[#ffffff89]">
+                                    <span className="text-[14px] text-[#0000008c] dark:text-[#ffffff6e]">
                                         Charla con nuestro equipo de soporte en tiempo real.
                                     </span>
                                 </div>
@@ -48,7 +49,7 @@ export default function Contacto() {
                                     <p className="text-[20px] font-bold">
                                         Enviar ticket de soporte
                                     </p>
-                                    <span className="text-[14px] text-[#ffffff89]">
+                                    <span className="text-[14px] text-[#0000008c] dark:text-[#ffffff6e]">
                                         Estamos disponibles para ayudarte con cualquier problema que tengas.
                                     </span>
                                 </div>
@@ -65,7 +66,7 @@ export default function Contacto() {
                                     <p className="text-[20px] font-bold">
                                         Visita nuestras oficinas
                                     </p>
-                                    <span className="text-[14px] text-[#ffffff89]">
+                                    <span className="text-[14px] text-[#0000008c] dark:text-[#ffffff6e]">
                                         Visita nuestras oficinas para asistencia personalizada.
                                     </span>
                                 </div>
@@ -82,7 +83,7 @@ export default function Contacto() {
                                     <p className="text-[20px] font-bold">
                                         Llamados telefónicos
                                     </p>
-                                    <span className="text-[14px] text-[#ffffff89]">
+                                    <span className="text-[14px] text-[#0000008c] dark:text-[#ffffff6e]">
                                         Puedes llamarnos para asistencia inmediata y consultas.
                                     </span>
                                 </div>

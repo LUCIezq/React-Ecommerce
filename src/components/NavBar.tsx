@@ -22,7 +22,7 @@ export default function NavBar({ setHidden }: Props) {
                 <li onClick={() => setHidden(true)} className="text-5xl md:text-[17px]"
                     key={link.id}>
                     <NavLink className={({ isActive }) =>
-                        `px-4 py-2 text-white  hover:underline underline-offset-8 ${isActive ? "underline decoration-white" : ''}`}
+                        `px-4 py-2 text-black font-medium dark:text-white  hover:underline underline-offset-8 ${isActive ? "underline decoration-black dark:decoration-white" : ''}`}
                         to={link.path}
                     >{link.name}</NavLink>
                 </li>

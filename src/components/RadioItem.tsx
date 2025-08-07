@@ -8,7 +8,7 @@ interface RadioItem {
 
 export function RadioItem({ value, name }: RadioItem) {
     return (
-        <div className="flex items-center space-x-2 ">
+        <div className="flex items-center space-x-2">
             <RadioGroupItem value={value} id={value} />
             <Label htmlFor={value}>{name}</Label>
         </div>
