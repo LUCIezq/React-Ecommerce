@@ -46,10 +46,10 @@ export default function CartMenu() {
                 </span>
             </SheetTrigger>
 
-            <SheetContent className="bg-[black] border-l-1 border-[#ffffff20]">
+            <SheetContent className="bg-[white] dark:bg-black border-l-1 border-[#ffffff20]">
                 <SheetHeader className="flex gap-5 h-full">
-                    <SheetTitle className="text-2xl text-white pb-2">Carrito</SheetTitle>
-                    <SheetDescription className="flex flex-col gap-5 h-full overflow-y-scroll scroll">
+                    <SheetTitle className="text-2xl text-black dark:text-white pb-2">Carrito</SheetTitle>
+                    <SheetDescription className="flex flex-col gap-5 h-full  scroll">
                         {carrito.length == 0 && <CartEmpty text="El carrito se encuentra actualmente vacio" />}
                         <div className="flex flex-col h-full justify-between">
                             <div className="flex flex-col gap-3">

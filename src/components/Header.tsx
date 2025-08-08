@@ -22,7 +22,7 @@ export default function Header() {
     return (
         <header className="bg-[white] dark:bg-black  fixed left-0 right-0  p-5 flex justify-between items-center z-40 ">
 
-            <div className="cursor-pointer z-50 md:hidden" onClick={showMenu}>
+            <div className="z-50 cursor-pointer md:hidden" onClick={showMenu}>
                 {hidden ?
                     <Menu color="white" /> :
                     <X color="white" />

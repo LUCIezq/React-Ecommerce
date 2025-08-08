@@ -23,7 +23,7 @@ const ToggleDarkMode = () => {
     return (
         <>
             {
-                <div onClick={handleToggleMode} className="cursor-pointer bg-[#505050] p-1 rounded-[7px] hover:bg-[#646464] transition-all">
+                <div onClick={handleToggleMode} className="cursor-pointer bg-[#505050] p-1 rounded-[7px] hover:bg-[#3d3d3d] transition-all dark:bg-[#242424]">
                     {
                         theme === 'light' ? <MoonIcon color="white" strokeWidth={1} /> : <SunIcon strokeWidth={1} />
                     }
