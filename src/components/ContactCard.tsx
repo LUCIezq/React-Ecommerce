@@ -1,6 +1,5 @@
 import type { LucideProps } from "lucide-react";
 import type { ForwardRefExoticComponent } from "react";
-
 interface ContactData {
     id: number,
     title: string,
@@ -11,8 +10,10 @@ interface ContactData {
 
 const ContactCard = ({ title, icon: Icon, description, link }: ContactData) => {
     return (
-        <div className="border-1 border-[#3533333b] dark:border-[#e6e6e63b] p-3 rounded-2xl shadow-2xl shadow-[#00000019]" >
+
+        <div className="border-1 border-[#3533333b] dark:border-[#e6e6e63b] p-3 rounded-2xl shadow-2xl shadow-[#00000019] " >
             <div className=" flex flex-col gap-4">
+
                 <Icon />
 
                 <div>

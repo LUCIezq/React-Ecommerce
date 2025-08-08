@@ -6,6 +6,8 @@ import { Heart } from "lucide-react"
 import { useContext } from "react"
 import { toast } from "sonner";
 import PopoverAdmin from "./PopoverAdmin";
+import { motion } from "motion/react"
+
 
 export default function Product({ item }: ProductProps) {
 
@@ -35,7 +37,7 @@ export default function Product({ item }: ProductProps) {
 
     return (
 
-        <div className=" h-fit border-1 relative bg-white border-[#00000027] hover:shadow-xl/5 shadow-white 
+        <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }} className=" h-fit border-1 relative bg-white border-[#00000027] hover:border-[#00000083] hover:shadow-xl/5 shadow-white 
                         cursor-pointer transition-all duration-400 w-full rounded-xl  hover:scale-105 dark:bg-black dark:border-[#ffffff48]">
 
             <div className=" p-5 flex flex-col gap-10">
@@ -59,7 +61,7 @@ export default function Product({ item }: ProductProps) {
                 </div>
 
                 <div className="flex items-center justify-between">
-                    <span className="text-[#000000a1] dark:text-white font-medium">$ {item.price}</span>
+                    <span className="text-[#000000a1] dark:text-white font-medium">$ {item.price.toLocaleString('es-AR')}</span>
 
 
                     {
@@ -67,9 +69,10 @@ export default function Product({ item }: ProductProps) {
                         <button className="border-1 border-[#000000a1] dark:border-white self-start px-3 py-1 
                     rounded-2xl cursor-pointer hover:bg-black hover:text-white transition-all text-[#000000a1] dark:text-white dark:hover:bg-white  dark:hover:text-black " onClick={() => addToCart(item)}>Comprar</button>
                     }
+
                 </div>
 
             </div>
-        </div >
+        </motion.div >
     )
 }

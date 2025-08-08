@@ -1,13 +1,21 @@
 import ContactContainer from "@/components/ContactContainer";
 import Main from "@/components/Main";
 import Title from "@/components/Title";
+import { motion } from "motion/react"
 
 export default function Contacto() {
     return (
         <Main>
             <Title text="Contacto" />
 
-            <div className="flex flex-col items-center justify-center gap-10 p-10">
+            <motion.div
+                initial={{ opacity: 0, scale: 0.6 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                    duration: 0.1,
+                    scale: { type: "tween", visualDuration: 0.4, bounce: 0.5 },
+                }}
+                className="flex flex-col items-center justify-center gap-10 p-10">
 
                 <div className="text-black dark:text-white bg-white dark:bg-black w-full 
                 max-w-[1200px] flex gap-40 p-8 justify-center rounded-3xl shadow-2xl shadow-[#ffffff12] border-[#0000001f] border-1 dark:border-[#ffffff52]">
@@ -29,7 +37,7 @@ export default function Contacto() {
 
                     <ContactContainer />
                 </div>
-            </div>
+            </motion.div>
 
         </Main>
     )

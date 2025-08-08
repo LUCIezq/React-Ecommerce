@@ -1,9 +1,13 @@
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { MoonIcon, SunIcon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const ToggleDarkMode = () => {
 
-    const [theme, setTheme] = useState('light');
+    // const [theme, setTheme] = useState('light');
+
+    const { object: theme, setObject: setTheme } = useLocalStorage("theme", "light");
+
 
     const handleToggleMode = () => {
         setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
